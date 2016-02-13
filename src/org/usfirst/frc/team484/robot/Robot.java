@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team484.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team484.robot.subsystems.ShooterArm;
+import org.usfirst.frc.team484.robot.subsystems.ShooterPiston;
 import org.usfirst.frc.team484.robot.subsystems.ShooterWheels;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -22,9 +23,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
+	public static final RobotIO robotIO = new RobotIO(); //Initializing robotIO, a class which initializes all IO on the robot
 	public static final Drivetrain drivetrain = new Drivetrain();
 	public static final ShooterArm shooterArm = new ShooterArm();
 	public static final ShooterWheels shooterWheels = new ShooterWheels();
+	public static final ShooterPiston shooterPiston = new ShooterPiston();
 	public static OI oi;
 
     /**

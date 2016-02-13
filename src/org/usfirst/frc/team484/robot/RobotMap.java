@@ -6,13 +6,45 @@ package org.usfirst.frc.team484.robot;
  * floating around.
  */
 public class RobotMap {
-    // For example to map the left and right motors, you could define the
-    // following variables to use with your drivetrain subsystem.
-    // public static int leftMotor = 1;
-    // public static int rightMotor = 2;
-    
-    // If you are using multiple modules, make sure to define both the port
-    // number and the module. For example you with a rangefinder:
-    // public static int rangefinderPort = 1;
-    // public static int rangefinderModule = 1;
+	//-------Motors-------
+	public static int frontLeftMotor = 0; //Talon in PWM slot
+	public static int rearLeftMotor = 1; //Talon in PWM slot
+	public static int frontRightMotor = 2; //Talon in PWM slot
+	public static int rearRightMotor = 3; //Talon in PWM slot
+	
+	public static int shooterArmMotor = 4; //Talon in PWM slot
+	public static int shooterLeftWheelMotor = 5; //Might be changed for use with TalonSRX defined for PWM Talon
+	public static int shooterRightWheelMotor = 6; //Might be changed for use with TalonSRX defined for PWM Talon
+	
+	public static int portcullisArmMotors = 0; //Relay in Digital IO slot
+	
+	public static int climberLeftMotor = 9; //Victor in PWM slot
+	public static int climberRightMotor = 10; //Victor in PWM slot
+	
+	//------Solenoids-----
+	public static int shooterPistonExtend = 0; //solenoid in PCM slot
+	public static int shooterPistonRetract = 1; //solenoid in PCM slot
+	
+	public static int portcullisLifterPistonsExtend = 2; //solenoid in PCM slot
+	public static int portcullisLifterPistonsRetract = 3; //solenoid in PCM slot
+	
+	//-------Sensors------
+	public static int topGyro = 0; //Gyro in Analog IO slot
+	public static int bottomGyro = 1; //Gyro in Analog IO slot
+	
+	public static int leftBallIR = 2; //Analog Input in Analog IO slot
+	public static int rightBallIR = 3; //Analog Input in Analog IO slot
+	
+	public static int driveEncoderLeftA = 1; //Encoder in Digital IO slot
+	public static int driveEncoderLeftB = 2; //Encoder in Digital IO slot
+	public static int driveEncoderRightA = 3; //Encoder in Digital IO slot
+	public static int driveEncoderRightB = 4; //Encoder in Digital IO slot
+	
+	public static int shooterArmEncoderA = 5; //Encoder in Digital IO slot
+	public static int shooterArmEncoderB = 6; //Encoder in Digital IO slot
+	
+	//-----Joysticks-----
+	public static int driverStick = 0; //Port assigned to the driver stick on the driver station
+	public static int operatorStick = 1; //Port assigned to the operator stick on the driver station
+	
 }
