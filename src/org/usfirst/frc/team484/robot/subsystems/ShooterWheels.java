@@ -2,6 +2,7 @@ package org.usfirst.frc.team484.robot.subsystems;
 
 import org.usfirst.frc.team484.robot.Robot;
 import org.usfirst.frc.team484.robot.RobotSettings;
+import org.usfirst.frc.team484.robot.commands.ShooterWheelsDoNothing;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -16,6 +17,7 @@ public class ShooterWheels extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	setDefaultCommand(new ShooterWheelsDoNothing());
     }
     public void shooterWheelsShoot() {
     	Robot.robotIO.shooterLeftWheelMotor.set(RobotSettings.shooterWheelsShootSpeedLeft);

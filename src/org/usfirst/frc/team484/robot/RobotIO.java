@@ -1,16 +1,18 @@
 package org.usfirst.frc.team484.robot;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.CANTalon.TalonControlMode;
+import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 
 public class RobotIO {
 	//-------Motors-------
@@ -19,9 +21,9 @@ public class RobotIO {
 	public Talon frontRightMotor;
 	public Talon rearRightMotor;
 	
-	public Talon shooterArmMotor;
-	public Talon shooterLeftWheelMotor;
-	public Talon shooterRightWheelMotor;
+	public VictorSP shooterArmMotor;
+	public CANTalon shooterLeftWheelMotor;
+	public CANTalon shooterRightWheelMotor;
 	
 	//------Solenoids-----
 	public Solenoid shooterPistonExtend;
@@ -45,6 +47,7 @@ public class RobotIO {
 	public RobotDrive driveRobot;
 	public PowerDistributionPanel pdp;
 	public DriverStation ds;
+	public Compressor airCompressor;
 	RobotIO() {
 		//-------Motors-------
 		frontLeftMotor = new Talon(RobotMap.frontLeftMotor);
@@ -52,10 +55,13 @@ public class RobotIO {
 		frontRightMotor = new Talon(RobotMap.frontRightMotor);
 		rearRightMotor = new Talon(RobotMap.rearRightMotor);
 		
-		shooterArmMotor = new Talon(RobotMap.shooterArmMotor);
-		shooterLeftWheelMotor = new Talon(RobotMap.shooterLeftWheelMotor);
-		shooterRightWheelMotor = new Talon(RobotMap.shooterRightWheelMotor);
-		
+		shooterArmMotor = new VictorSP(RobotMap.shooterArmMotor);
+		shooterLeftWheelMotor = new CANTalon(RobotMap.shooterLeftWheelMotor);
+		shooterRightWheelMotor = new CANTalon(RobotMap.shooterRightWheelMotor);
+		//shooterLeftWheelMotor.changeControlMode(TalonControlMode.Voltage);
+		//shooterRightWheelMotor.changeControlMode(TalonControlMode.Voltage);
+		//shooterLeftWheelMotor.setVoltageCompensationRampRate(24.0);
+		//shooterRightWheelMotor.setVoltageCompensationRampRate(24.0);
 		
 		//------Solenoids-----
 		shooterPistonExtend = new Solenoid(RobotMap.shooterPistonExtend);
@@ -78,7 +84,12 @@ public class RobotIO {
 		
 		//-------Misc--------
 		driveRobot = new RobotDrive(frontLeftMotor, rearLeftMotor, frontRightMotor, rearRightMotor);
+		driveRobot.setInvertedMotor(MotorType.kFrontLeft, true);
+		driveRobot.setInvertedMotor(MotorType.kRearLeft, true);
+        driveRobot.setInvertedMotor(MotorType.kFrontRight, true);
+        driveRobot.setInvertedMotor(MotorType.kRearRight, true);
 		pdp = new PowerDistributionPanel();
 		ds = DriverStation.getInstance();
+		airCompressor = new Compressor();
 	}
 }

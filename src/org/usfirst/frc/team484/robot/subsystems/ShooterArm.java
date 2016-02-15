@@ -29,6 +29,7 @@ public class ShooterArm extends Subsystem {
     	} else {
     		modSpeed = speed / 4.0;
     	}
+    	System.out.println(Robot.robotIO.shooterArmEncoder.getDistance());
     	Robot.robotIO.shooterArmMotor.set(modSpeed - 0.067 * Math.sin(Robot.robotIO.shooterArmEncoder.getDistance()));
     }
 }

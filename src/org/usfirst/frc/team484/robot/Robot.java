@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team484.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -29,13 +30,20 @@ public class Robot extends IterativeRobot {
 	public static final ShooterWheels shooterWheels = new ShooterWheels();
 	public static final ShooterPiston shooterPiston = new ShooterPiston();
 	public static OI oi;
-
+	CameraServer camera;
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
 		oi = new OI();
+		robotIO.airCompressor.start();
+		try {
+			camera = CameraServer.getInstance();
+			camera.startAutomaticCapture("cam1");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
     }
 	
 	/**

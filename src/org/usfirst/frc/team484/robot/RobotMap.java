@@ -13,20 +13,15 @@ public class RobotMap {
 	public static int rearRightMotor = 3; //Talon in PWM slot
 	
 	public static int shooterArmMotor = 4; //Talon in PWM slot
-	public static int shooterLeftWheelMotor = 5; //Might be changed for use with TalonSRX defined for PWM Talon
-	public static int shooterRightWheelMotor = 6; //Might be changed for use with TalonSRX defined for PWM Talon
-	
-	public static int portcullisArmMotors = 0; //Relay in Digital IO slot
-	
+	public static int shooterLeftWheelMotor = 0; //Might be changed for use with TalonSRX defined for PWM Talon
+	public static int shooterRightWheelMotor = 1; //Might be changed for use with TalonSRX defined for PWM Talon
+		
 	public static int climberLeftMotor = 9; //Victor in PWM slot
 	public static int climberRightMotor = 10; //Victor in PWM slot
 	
 	//------Solenoids-----
 	public static int shooterPistonExtend = 0; //solenoid in PCM slot
 	public static int shooterPistonRetract = 1; //solenoid in PCM slot
-	
-	public static int portcullisLifterPistonsExtend = 2; //solenoid in PCM slot
-	public static int portcullisLifterPistonsRetract = 3; //solenoid in PCM slot
 	
 	//-------Sensors------
 	public static int topGyro = 0; //Gyro in Analog IO slot
@@ -35,13 +30,13 @@ public class RobotMap {
 	public static int leftBallIR = 2; //Analog Input in Analog IO slot
 	public static int rightBallIR = 3; //Analog Input in Analog IO slot
 	
-	public static int driveEncoderLeftA = 1; //Encoder in Digital IO slot
-	public static int driveEncoderLeftB = 2; //Encoder in Digital IO slot
-	public static int driveEncoderRightA = 3; //Encoder in Digital IO slot
-	public static int driveEncoderRightB = 4; //Encoder in Digital IO slot
+	public static int driveEncoderLeftA = 0; //Encoder in Digital IO slot
+	public static int driveEncoderLeftB = 1; //Encoder in Digital IO slot
+	public static int driveEncoderRightA = 2; //Encoder in Digital IO slot
+	public static int driveEncoderRightB = 3; //Encoder in Digital IO slot
 	
-	public static int shooterArmEncoderA = 5; //Encoder in Digital IO slot
-	public static int shooterArmEncoderB = 6; //Encoder in Digital IO slot
+	public static int shooterArmEncoderA = 4; //Encoder in Digital IO slot
+	public static int shooterArmEncoderB = 5; //Encoder in Digital IO slot
 	
 	//-----Joysticks-----
 	public static int driverStick = 0; //Port assigned to the driver stick on the driver station
