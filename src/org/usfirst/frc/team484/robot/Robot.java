@@ -29,6 +29,7 @@ public class Robot extends IterativeRobot {
 	public static final ShooterArm shooterArm = new ShooterArm();
 	public static final ShooterWheels shooterWheels = new ShooterWheels();
 	public static final ShooterPiston shooterPiston = new ShooterPiston();
+	public static final VisionCalculations visionCalc = new VisionCalculations();
 	public static OI oi;
 	CameraServer camera;
     /**
@@ -86,6 +87,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        visionCalc.run();
     }
     
     /**

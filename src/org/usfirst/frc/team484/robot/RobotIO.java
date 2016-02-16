@@ -84,10 +84,12 @@ public class RobotIO {
 		
 		//-------Misc--------
 		driveRobot = new RobotDrive(frontLeftMotor, rearLeftMotor, frontRightMotor, rearRightMotor);
-		driveRobot.setInvertedMotor(MotorType.kFrontLeft, true);
-		driveRobot.setInvertedMotor(MotorType.kRearLeft, true);
-        driveRobot.setInvertedMotor(MotorType.kFrontRight, true);
-        driveRobot.setInvertedMotor(MotorType.kRearRight, true);
+		if (RobotSettings.invertDrivetrain) {
+			driveRobot.setInvertedMotor(MotorType.kFrontLeft, true);
+			driveRobot.setInvertedMotor(MotorType.kRearLeft, true);
+			driveRobot.setInvertedMotor(MotorType.kFrontRight, true);
+			driveRobot.setInvertedMotor(MotorType.kRearRight, true);
+		}
 		pdp = new PowerDistributionPanel();
 		ds = DriverStation.getInstance();
 		airCompressor = new Compressor();

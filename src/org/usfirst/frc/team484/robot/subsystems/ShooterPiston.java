@@ -25,5 +25,9 @@ public class ShooterPiston extends Subsystem {
     	Robot.robotIO.shooterPistonExtend.set(false);
     	Robot.robotIO.shooterPistonRetract.set(true);
     }
+    public void shooterPistonFloat() {
+    	Robot.robotIO.shooterPistonExtend.set(false);
+    	Robot.robotIO.shooterPistonRetract.set(false);
+    }
 }
 

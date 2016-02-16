@@ -1,6 +1,7 @@
 package org.usfirst.frc.team484.robot;
 
 import org.usfirst.frc.team484.robot.commands.ShooterPistonExtend;
+import org.usfirst.frc.team484.robot.commands.ShooterPistonFloat;
 import org.usfirst.frc.team484.robot.commands.ShooterPistonRetract;
 import org.usfirst.frc.team484.robot.commands.ShooterWheelsDoNothing;
 import org.usfirst.frc.team484.robot.commands.ShooterWheelsIntake;
@@ -47,7 +48,9 @@ public class OI {
 		prepareToShoot.whileHeld(new ShooterWheelsShoot());
 		prepareToShoot.whenReleased(new ShooterWheelsDoNothing());
 		intake.whileHeld(new ShooterWheelsIntake());
+		intake.whileHeld(new ShooterPistonFloat());
 		intake.whenReleased(new ShooterWheelsDoNothing());
+		intake.whenReleased(new ShooterPistonRetract());
 		shoot.whileHeld(new ShooterPistonExtend());
 		shoot.whenReleased(new ShooterPistonRetract());
 	}
