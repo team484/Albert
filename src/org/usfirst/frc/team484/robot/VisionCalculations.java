@@ -3,22 +3,19 @@ package org.usfirst.frc.team484.robot;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 public class VisionCalculations {
-	double radiansPerPixel = 0.0;
-	double cameraHeight = 0.0;
-	double cameraHorizontalOffset = 0.0;
-	double cameraImageWidth = 0.0;
-	double cameraImageHeight = 0.0;
-	double cameraAngleUp = 40.0 * 0.0174533; //0.0174533 converts to radians
+	double radiansPerPixel = 0.00125445;
+	double cameraHeight = 12.25;
+	double cameraHorizontalOffset = 11.5;
+	double cameraImageWidth = 640.0;
+	double cameraImageHeight = 479.0;
+	double cameraAngleUp = 0.443448; //0.0174533 converts to radians
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new VisionCalculations().run();
 	}
 	public void run() {
 		NetworkTable visionTable = NetworkTable.getTable("GRIP/vision");
-		
-		while (true) {
 			try {
-			Thread.sleep(100);
 			double[] centerX = visionTable.getNumberArray("centerX", new double[0]);
 			double[] centerY = visionTable.getNumberArray("centerY", new double[0]);
 			double[] area = visionTable.getNumberArray("area", new double[0]);
@@ -32,14 +29,15 @@ public class VisionCalculations {
 					maxArea = area[i];
 					maxAreaSpot = i;
 				}
+				i++;
 			}
 			if (maxAreaSpot > -1) {
-				double verticalAngleBottom = cameraAngleUp + (centerY[maxAreaSpot] - height[maxAreaSpot]/2.0) * radiansPerPixel;
-				double verticalAngleTop = cameraAngleUp + (centerY[maxAreaSpot] + height[maxAreaSpot]/2.0) * radiansPerPixel;
+				double verticalAngleBottom = cameraAngleUp + ((cameraImageHeight - centerY[maxAreaSpot]) - height[maxAreaSpot]/2.0) * radiansPerPixel;
+				double verticalAngleTop = cameraAngleUp + ((cameraImageHeight - centerY[maxAreaSpot]) + height[maxAreaSpot]/2.0) * radiansPerPixel;
 				double horizontalAngleCenter = 1.5708 - (cameraImageWidth / 2.0 - centerX[maxAreaSpot]) * radiansPerPixel;
 				
-				double distance1 = (83 - cameraHeight)/Math.tan(verticalAngleBottom);
-				double distance2 = (95 - cameraHeight)/Math.tan(verticalAngleTop);
+				double distance1 = (83.5 - cameraHeight)/Math.tan(verticalAngleBottom);
+				double distance2 = (95.5 - cameraHeight)/Math.tan(verticalAngleTop);
 				double  horizontalOffset1 = (Math.cos(horizontalAngleCenter) * distance1 - cameraHorizontalOffset * Math.sin(horizontalAngleCenter))/Math.sin(horizontalAngleCenter);
 				double  horizontalOffset2 = (Math.cos(horizontalAngleCenter) * distance2 - cameraHorizontalOffset * Math.sin(horizontalAngleCenter))/Math.sin(horizontalAngleCenter);
 				System.out.println("Dist1: " + distance1 + "  horizOff1: " + horizontalOffset1);
@@ -50,7 +48,6 @@ public class VisionCalculations {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
 	}
 
 }

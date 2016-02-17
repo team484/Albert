@@ -32,6 +32,7 @@ public class Robot extends IterativeRobot {
 	public static final VisionCalculations visionCalc = new VisionCalculations();
 	public static OI oi;
 	CameraServer camera;
+	public static int i = 0;
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -87,7 +88,12 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        visionCalc.run();
+        if (i == 5) {
+        	visionCalc.run();
+        	i = 0;
+        } else {
+        	i++;
+        }
     }
     
     /**
