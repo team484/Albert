@@ -9,6 +9,9 @@ public class VisionCalculations {
 	double cameraImageWidth = 640.0;
 	double cameraImageHeight = 479.0;
 	double cameraAngleUp = 0.443448; //0.0174533 converts to radians
+	double heightOfShotInGoal = 15.0;
+	double heightOfGoalBottom = 83.5;
+	double heightOfGoalTop = 95.5;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new VisionCalculations().run();
@@ -34,14 +37,16 @@ public class VisionCalculations {
 			if (maxAreaSpot > -1) {
 				double verticalAngleBottom = cameraAngleUp + ((cameraImageHeight - centerY[maxAreaSpot]) - height[maxAreaSpot]/2.0) * radiansPerPixel;
 				double verticalAngleTop = cameraAngleUp + ((cameraImageHeight - centerY[maxAreaSpot]) + height[maxAreaSpot]/2.0) * radiansPerPixel;
-				double horizontalAngleCenter = 1.5708 - (cameraImageWidth / 2.0 - centerX[maxAreaSpot]) * radiansPerPixel;
+				double horizontalAngleCenter = 1.5707963268 - (cameraImageWidth / 2.0 - centerX[maxAreaSpot]) * radiansPerPixel;
 				
-				double distance1 = (83.5 - cameraHeight)/Math.tan(verticalAngleBottom);
-				double distance2 = (95.5 - cameraHeight)/Math.tan(verticalAngleTop);
-				double  horizontalOffset1 = (Math.cos(horizontalAngleCenter) * distance1 - cameraHorizontalOffset * Math.sin(horizontalAngleCenter))/Math.sin(horizontalAngleCenter);
-				double  horizontalOffset2 = (Math.cos(horizontalAngleCenter) * distance2 - cameraHorizontalOffset * Math.sin(horizontalAngleCenter))/Math.sin(horizontalAngleCenter);
-				System.out.println("Dist1: " + distance1 + "  horizOff1: " + horizontalOffset1);
-				System.out.println("Dist2: " + distance2 + "  horizOff2: " + horizontalOffset2);
+				double distance1 = (heightOfGoalBottom - cameraHeight)/Math.tan(verticalAngleBottom);
+				double distance2 = (heightOfGoalTop - cameraHeight)/Math.tan(verticalAngleTop);
+				double horizontalOffset1 = (Math.cos(horizontalAngleCenter) * distance1 - cameraHorizontalOffset * Math.sin(horizontalAngleCenter))/Math.sin(horizontalAngleCenter);
+				double horizontalOffset2 = (Math.cos(horizontalAngleCenter) * distance2 - cameraHorizontalOffset * Math.sin(horizontalAngleCenter))/Math.sin(horizontalAngleCenter);
+				double shootAngle = Math.atan((heightOfGoalBottom + heightOfShotInGoal)/distance1);
+				System.out.println("D1: " + distance1 + "  h1: " + horizontalOffset1);
+				System.out.println("D2: " + distance2 + "  h2: " + horizontalOffset2);
+				System.out.println("Too low by: " + (shootAngle - (1.5707963268 + Robot.robotIO.shooterArmEncoder.getDistance())));
 			} else {
 				System.out.println("Target Not Found");
 			}
