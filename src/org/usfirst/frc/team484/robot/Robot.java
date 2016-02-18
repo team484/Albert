@@ -88,7 +88,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        if (i == 5) {
+        if (i == 2) {
         	visionCalc.run();
         	i = 0;
         } else {

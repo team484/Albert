@@ -3,12 +3,12 @@ package org.usfirst.frc.team484.robot;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 public class VisionCalculations {
-	double radiansPerPixel = 0.00125445;
+	double radiansPerPixel = 0.00133;
 	double cameraHeight = 12.25;
-	double cameraHorizontalOffset = 11.5;
+	double cameraHorizontalOffset = 11.59375;
 	double cameraImageWidth = 640.0;
 	double cameraImageHeight = 479.0;
-	double cameraAngleUp = 0.443448; //0.0174533 converts to radians
+	double cameraAngleUp = 0.345915; //0.0174533 converts to radians
 	double heightOfShotInGoal = 15.0;
 	double heightOfGoalBottom = 83.5;
 	double heightOfGoalTop = 95.5;
