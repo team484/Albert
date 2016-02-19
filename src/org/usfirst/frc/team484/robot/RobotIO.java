@@ -58,10 +58,10 @@ public class RobotIO {
 		shooterArmMotor = new VictorSP(RobotMap.shooterArmMotor);
 		shooterLeftWheelMotor = new CANTalon(RobotMap.shooterLeftWheelMotor);
 		shooterRightWheelMotor = new CANTalon(RobotMap.shooterRightWheelMotor);
-		//shooterLeftWheelMotor.changeControlMode(TalonControlMode.Voltage);
-		//shooterRightWheelMotor.changeControlMode(TalonControlMode.Voltage);
-		//shooterLeftWheelMotor.setVoltageCompensationRampRate(24.0);
-		//shooterRightWheelMotor.setVoltageCompensationRampRate(24.0);
+		shooterLeftWheelMotor.changeControlMode(TalonControlMode.Voltage);
+		shooterRightWheelMotor.changeControlMode(TalonControlMode.Voltage);
+		shooterLeftWheelMotor.setVoltageRampRate(24.0);
+		shooterRightWheelMotor.setVoltageRampRate(24.0);
 		
 		//------Solenoids-----
 		shooterPistonExtend = new Solenoid(RobotMap.shooterPistonExtend);

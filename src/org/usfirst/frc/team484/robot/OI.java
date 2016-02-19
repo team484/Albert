@@ -1,5 +1,6 @@
 package org.usfirst.frc.team484.robot;
 
+import org.usfirst.frc.team484.robot.commands.ShooterArmToAngle;
 import org.usfirst.frc.team484.robot.commands.ShooterPistonExtend;
 import org.usfirst.frc.team484.robot.commands.ShooterPistonFloat;
 import org.usfirst.frc.team484.robot.commands.ShooterPistonRetract;
@@ -18,6 +19,8 @@ public class OI {
 	Button prepareToShoot = new JoystickButton(Robot.robotIO.operatorStick, 3);
 	Button intake = new JoystickButton(Robot.robotIO.operatorStick, 2);
 	Button shoot = new JoystickButton(Robot.robotIO.operatorStick, 1);
+	Button armVertical = new JoystickButton(Robot.robotIO.operatorStick, 11);
+	Button armHorizontal = new JoystickButton(Robot.robotIO.operatorStick, 10);
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
@@ -53,6 +56,9 @@ public class OI {
 		intake.whenReleased(new ShooterPistonRetract());
 		shoot.whileHeld(new ShooterPistonExtend());
 		shoot.whenReleased(new ShooterPistonRetract());
+		
+		armVertical.whileHeld(new ShooterArmToAngle(0));
+		armHorizontal.whileHeld(new ShooterArmToAngle(-1.570796));
 	}
 }
 

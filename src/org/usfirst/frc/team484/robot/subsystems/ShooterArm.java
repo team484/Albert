@@ -30,7 +30,11 @@ public class ShooterArm extends Subsystem {
     	} else {
     		modSpeed = speed / RobotSettings.shooterArmDownSpeedDivisor;
     	}
-    	Robot.robotIO.shooterArmMotor.set(modSpeed - RobotSettings.shooterArmGravityCompensationCoefficient * Math.sin(Robot.robotIO.shooterArmEncoder.getDistance()));
+    	modSpeed = modSpeed * 12 / Robot.robotIO.pdp.getVoltage();
+    	Robot.robotIO.shooterArmMotor.set(modSpeed - RobotSettings.shooterArmGravityCompensationCoefficient * Math.sin(getArmAngle()));
+    }
+    public double getArmAngle() {
+    	return Robot.robotIO.shooterArmEncoder.getDistance();
     }
 }
 
