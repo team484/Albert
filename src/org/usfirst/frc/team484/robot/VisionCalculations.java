@@ -1,6 +1,7 @@
 package org.usfirst.frc.team484.robot;
 
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class VisionCalculations {
 	double radiansPerPixel = 0.00119;
@@ -53,6 +54,9 @@ public class VisionCalculations {
 				} else {
 					//System.out.println("D: " + distance + "  h1: " + horizontalOffset1 + " h2: " + horizontalOffset2);
 					//System.out.println("Too low by: " + (shootAngle - (1.5707963268 + Robot.robotIO.shooterArmEncoder.getDistance())));
+					SmartDashboard.putNumber("Distance", distance);
+					SmartDashboard.putNumber("H1", horizontalOffset1);
+					SmartDashboard.putNumber("H2", horizontalOffset2);
 				}
 			} else {
 				//System.out.println("Target Not Found");

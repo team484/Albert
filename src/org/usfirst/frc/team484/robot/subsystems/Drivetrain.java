@@ -20,13 +20,15 @@ public class Drivetrain extends Subsystem {
     }
     public void driveWithJoysticks() {
     	setDrive(-Robot.robotIO.driverStick.getY(), Robot.robotIO.driverStick.getX());
-    	System.out.println("L: " + Robot.robotIO.driveEncoder.getDistance());
     }
     public void setDrive(double translation, double rotation) { //clockwise positive
     	Robot.robotIO.driveRobot.arcadeDrive(translation, rotation);
     }
     public double currentDistance() {
     	return Robot.robotIO.driveEncoder.getDistance();
+    }
+    public double getRobotAngle() {
+    	return (Robot.robotIO.topGyro.getAngle() - Robot.robotIO.bottomGyro.getAngle()) / 2.0;
     }
 }
 

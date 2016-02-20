@@ -12,15 +12,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class DriveDistance extends Command {
+public class RotateAngle extends Command {
 	PIDController pid;
-    public DriveDistance(double setpoint) {
+    public RotateAngle(double setpoint) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
-    	pid = new PIDController(0.148, 0.0, 0.5, new PIDSource() {
+    	pid = new PIDController(0.04, 0.0, 0.038, new PIDSource() {
     		public double pidGet() {
-    			return Robot.drivetrain.currentDistance();
+    			return Robot.drivetrain.getRobotAngle();
     		}
 
 			@Override
@@ -36,7 +36,7 @@ public class DriveDistance extends Command {
 			}
     	}, new PIDOutput() {
     		public void pidWrite(double d) {
-    			Robot.drivetrain.setDrive(d / 1.5, 0.0);
+    			Robot.drivetrain.setDrive(0, d);
     		}
     	});
     	//pid.setOutputRange(-2.0, 2.0);
@@ -46,13 +46,15 @@ public class DriveDistance extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.robotIO.driveEncoder.reset();
+    	Robot.robotIO.topGyro.reset();
+    	Robot.robotIO.bottomGyro.reset();
     	pid.reset();
     	pid.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	SmartDashboard.putNumber("ang", pid.getError());
     }
 
     // Make this return true when this Command no longer needs to run execute()

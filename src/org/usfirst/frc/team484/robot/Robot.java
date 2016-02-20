@@ -93,6 +93,7 @@ public class Robot extends IterativeRobot {
         } else {
         	i++;
         }
+        SmartDashboard.putNumber("Arm Angle", shooterArm.getArmAngle());
     }
     
     /**
