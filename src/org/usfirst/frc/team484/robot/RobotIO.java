@@ -34,8 +34,7 @@ public class RobotIO {
 	public AnalogGyro topGyro;
 	public AnalogGyro bottomGyro;
 	
-	public Encoder driveEncoderLeft;
-	public Encoder driveEncoderRight;
+	public Encoder driveEncoder;
 	public Encoder shooterArmEncoder;
 	
 	//-----Joysticks-----
@@ -72,8 +71,8 @@ public class RobotIO {
 		topGyro = new AnalogGyro(RobotMap.topGyro);
 		bottomGyro = new AnalogGyro(RobotMap.bottomGyro);
 
-		driveEncoderLeft = new Encoder(RobotMap.driveEncoderLeftA, RobotMap.driveEncoderLeftB);
-		driveEncoderRight = new Encoder(RobotMap.driveEncoderRightA, RobotMap.driveEncoderRightB);
+		driveEncoder = new Encoder(RobotMap.driveEncoderA, RobotMap.driveEncoderB);
+		driveEncoder.setDistancePerPulse(-0.0966748);
 		shooterArmEncoder = new Encoder(RobotMap.shooterArmEncoderA,RobotMap.shooterArmEncoderB);
 		shooterArmEncoder.setDistancePerPulse(RobotSettings.shooterArmEncoderAnglePerPulse);
 		
