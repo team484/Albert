@@ -45,8 +45,9 @@ public class VisionCalculations {
 				double verticalAngleCenter =  cameraAngleUp + (cameraImageHeight - centerY[maxAreaSpot] - 1) * radiansPerPixel;
 
 				double distance = (heightOfGoalCenter - cameraHeight)/Math.tan(verticalAngleCenter);
-				double horizontalOffset1 = distance / Math.tan(horizontalAngleCenter) - cameraHorizontalOffset;
-				double horizontalOffset2 = distance / Math.tan(horizontalAngleRight) - (cameraHorizontalOffset - goalWidth/2.0);
+				double angularDistance = (heightOfGoalCenter - cameraHeight)/Math.sin(verticalAngleCenter);
+				double horizontalOffset1 = angularDistance / Math.tan(horizontalAngleCenter) - cameraHorizontalOffset;
+				double horizontalOffset2 = angularDistance / Math.tan(horizontalAngleRight) - (cameraHorizontalOffset - goalWidth/2.0) + cameraHorizontalOffset;
 				
 				double shootAngle = Math.atan((heightOfGoalCenter + heightOfShotInGoal)/distance);
 				if (centerY[maxAreaSpot] + height[maxAreaSpot]/2.0 >= 480) {
@@ -57,6 +58,7 @@ public class VisionCalculations {
 					SmartDashboard.putNumber("Distance", distance);
 					SmartDashboard.putNumber("H1", horizontalOffset1);
 					SmartDashboard.putNumber("H2", horizontalOffset2);
+					SmartDashboard.putNumber("Proper Angle", Math.atan(Math.log(-373*(distance * distance - 938.338 * distance - 33746.6))-17.0344));
 				}
 			} else {
 				//System.out.println("Target Not Found");
