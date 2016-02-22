@@ -1,18 +1,20 @@
 package org.usfirst.frc.team484.robot.commands;
 
 import org.usfirst.frc.team484.robot.Robot;
+import org.usfirst.frc.team484.robot.RobotSettings;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ShooterPistonFloat extends Command {
-
-    public ShooterPistonFloat() {
+public class ShooterArmToGround extends Command {
+	private boolean exit = true;
+    public ShooterArmToGround(boolean exitOnGround) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.shooterPiston);
+    	requires(Robot.shooterArm);
+    	exit = exitOnGround;
     }
 
     // Called just before this Command runs the first time
@@ -21,17 +23,17 @@ public class ShooterPistonFloat extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.shooterPiston.shooterPistonFloat();
+    	Robot.shooterArm.adjustedShooterArmValue(-RobotSettings.shooterArmTargetSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return (Robot.shooterArm.getArmAngle() < -1.5707963268 && Robot.robotIO.shooterArmEncoder.getRate() >= 0.0 && exit);
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.shooterPiston.shooterPistonRetract();
+    	Robot.shooterArm.adjustedShooterArmValue(0.0);
     }
 
     // Called when another command which requires one or more of the same

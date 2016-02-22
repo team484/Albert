@@ -59,8 +59,8 @@ public class RobotIO {
 		shooterRightWheelMotor = new CANTalon(RobotMap.shooterRightWheelMotor);
 		shooterLeftWheelMotor.changeControlMode(TalonControlMode.Voltage);
 		shooterRightWheelMotor.changeControlMode(TalonControlMode.Voltage);
-		shooterLeftWheelMotor.setVoltageRampRate(24.0);
-		shooterRightWheelMotor.setVoltageRampRate(24.0);
+		shooterLeftWheelMotor.setVoltageRampRate(RobotSettings.shooterWheelsVoltageRampRate);
+		shooterRightWheelMotor.setVoltageRampRate(RobotSettings.shooterWheelsVoltageRampRate);
 		
 		//------Solenoids-----
 		shooterPistonExtend = new Solenoid(RobotMap.shooterPistonExtend);
@@ -72,7 +72,7 @@ public class RobotIO {
 		bottomGyro = new AnalogGyro(RobotMap.bottomGyro);
 
 		driveEncoder = new Encoder(RobotMap.driveEncoderA, RobotMap.driveEncoderB);
-		driveEncoder.setDistancePerPulse(-0.0966748);
+		driveEncoder.setDistancePerPulse(RobotSettings.drivetrainDistancePerEncoderPulse);
 		shooterArmEncoder = new Encoder(RobotMap.shooterArmEncoderA,RobotMap.shooterArmEncoderB);
 		shooterArmEncoder.setDistancePerPulse(RobotSettings.shooterArmEncoderAnglePerPulse);
 		

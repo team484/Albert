@@ -1,6 +1,7 @@
 package org.usfirst.frc.team484.robot.commands;
 
 import org.usfirst.frc.team484.robot.Robot;
+import org.usfirst.frc.team484.robot.RobotSettings;
 
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
@@ -17,7 +18,7 @@ public class ShooterArmToAngle extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.shooterArm);
-    	pid = new PIDController(2.4, 0.01, 1.0, new PIDSource() {
+    	pid = new PIDController(RobotSettings.shooterArmkP, RobotSettings.shooterArmkI, RobotSettings.shooterArmkD, new PIDSource() {
     		public double pidGet() {
     			return Robot.shooterArm.getArmAngle();
     		}

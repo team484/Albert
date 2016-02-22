@@ -10,19 +10,16 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class ShooterArm extends Subsystem {
-    
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new ShooterArmWithJoystick());
     }
+    
     public void shooterArmWithJoystick() {
     	adjustedShooterArmValue(Robot.robotIO.operatorStick.getY());
     	
     }
+    
     public void adjustedShooterArmValue(double speed) {
     	double modSpeed;
     	if (speed > 0) {
@@ -30,9 +27,10 @@ public class ShooterArm extends Subsystem {
     	} else {
     		modSpeed = speed / RobotSettings.shooterArmDownSpeedDivisor;
     	}
-    	modSpeed = modSpeed * 12 / Robot.robotIO.pdp.getVoltage();
+    	modSpeed = modSpeed * RobotSettings.shooterArmVoltageTarget / Robot.robotIO.pdp.getVoltage();
     	Robot.robotIO.shooterArmMotor.set(modSpeed - RobotSettings.shooterArmGravityCompensationCoefficient * Math.sin(getArmAngle()));
     }
+    
     public double getArmAngle() {
     	return Robot.robotIO.shooterArmEncoder.getDistance();
     }

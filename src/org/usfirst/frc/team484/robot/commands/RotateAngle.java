@@ -1,6 +1,7 @@
 package org.usfirst.frc.team484.robot.commands;
 
 import org.usfirst.frc.team484.robot.Robot;
+import org.usfirst.frc.team484.robot.RobotSettings;
 
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
@@ -18,7 +19,7 @@ public class RotateAngle extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
-    	pid = new PIDController(0.04, 0.0, 0.038, new PIDSource() {
+    	pid = new PIDController(RobotSettings.rotateAnglekP, RobotSettings.rotateAnglekI, RobotSettings.rotateAnglekD, new PIDSource() {
     		public double pidGet() {
     			return Robot.drivetrain.getRobotAngle();
     		}

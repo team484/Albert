@@ -10,23 +10,21 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class ShooterWheels extends Subsystem {
-    
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new ShooterWheelsDoNothing());
     }
+    
     public void shooterWheelsShoot() {
     	Robot.robotIO.shooterLeftWheelMotor.set(RobotSettings.shooterWheelsShootSpeedLeft);
     	Robot.robotIO.shooterRightWheelMotor.set(RobotSettings.shooterWheelsShootSpeedRight);
     }
+    
     public void shooterWheelsIntake() {
     	Robot.robotIO.shooterLeftWheelMotor.set(RobotSettings.shooterWheelsIntakeSpeedLeft);
     	Robot.robotIO.shooterRightWheelMotor.set(RobotSettings.shooterWheelsIntakeSpeedRight);
     }
+    
     public void shooterWheelsDoNothing() {
     	Robot.robotIO.shooterLeftWheelMotor.set(0);
     	Robot.robotIO.shooterRightWheelMotor.set(0);

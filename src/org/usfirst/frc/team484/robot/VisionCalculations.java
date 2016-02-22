@@ -4,19 +4,19 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class VisionCalculations {
-	double radiansPerPixel = 0.00119;
-	double radiansPerPixelHorizontal = 0.0012544553999;
-	double cameraHeight = 12.25;
-	double cameraHorizontalOffset = 11.59375;
-	double cameraImageWidth = 640.0;
-	double cameraImageHeight = 480.0;
-	double cameraAngleUp = 0.376; //0.0174533 converts to radians
-	double heightOfShotInGoal = 15.0;
-	double heightOfGoalBottom = 83.5;
-	double heightOfGoalTop = 95.5;
-	double heightOfGoalCenter = 89.25;
-	double goalWidth = 20;
+	private double radiansPerPixel = 0.00119;
+	private double radiansPerPixelHorizontal = 0.0012544553999;
+	private double cameraHeight = 12.25;
+	private double cameraHorizontalOffset = 11.59375;
+	private double cameraImageWidth = 640.0;
+	private double cameraImageHeight = 480.0;
+	private double cameraAngleUp = 0.376; //0.0174533 converts to radians
+	private double heightOfGoalCenter = 89.25;
+	private double goalWidth = 20;
 
+	public double lastHorizontal = Double.NaN;
+	public double lastDistance = Double.NaN;
+	public double lastAngle = Double.NaN;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new VisionCalculations().run();
@@ -43,29 +43,38 @@ public class VisionCalculations {
 				double horizontalAngleCenter = 1.5707963268 - (cameraImageWidth / 2.0 - centerX[maxAreaSpot]) * radiansPerPixelHorizontal;
 				double horizontalAngleRight = 1.5707963268 - (cameraImageWidth / 2.0 - (centerX[maxAreaSpot] + width[maxAreaSpot])) * radiansPerPixelHorizontal;
 				double verticalAngleCenter =  cameraAngleUp + (cameraImageHeight - centerY[maxAreaSpot] - 1) * radiansPerPixel;
-
 				double distance = (heightOfGoalCenter - cameraHeight)/Math.tan(verticalAngleCenter);
 				double angularDistance = (heightOfGoalCenter - cameraHeight)/Math.sin(verticalAngleCenter);
 				double horizontalOffset1 = angularDistance / Math.tan(horizontalAngleCenter) - cameraHorizontalOffset;
-				double horizontalOffset2 = angularDistance / Math.tan(horizontalAngleRight) - (cameraHorizontalOffset - goalWidth/2.0) + cameraHorizontalOffset;
-				
-				double shootAngle = Math.atan((heightOfGoalCenter + heightOfShotInGoal)/distance);
-				if (centerY[maxAreaSpot] + height[maxAreaSpot]/2.0 >= 480) {
-					//System.out.println("Camera At Max Distance");
+				double horizontalOffset2 = angularDistance / Math.tan(horizontalAngleRight) - (cameraHorizontalOffset - goalWidth/2.0) + cameraHorizontalOffset;				
+				if (centerY[maxAreaSpot] + height[maxAreaSpot]/2.0 >= 479 || centerY[maxAreaSpot] - height[maxAreaSpot]/2.0 <= 1) {
+					noTarget();
 				} else {
 					//System.out.println("D: " + distance + "  h1: " + horizontalOffset1 + " h2: " + horizontalOffset2);
 					//System.out.println("Too low by: " + (shootAngle - (1.5707963268 + Robot.robotIO.shooterArmEncoder.getDistance())));
+					lastAngle = Math.atan(Math.log(-373*(distance * distance - 938.338 * distance - 33746.6))-17.0344);
+					lastHorizontal = horizontalOffset1;
+					lastDistance = distance;
 					SmartDashboard.putNumber("Distance", distance);
 					SmartDashboard.putNumber("H1", horizontalOffset1);
 					SmartDashboard.putNumber("H2", horizontalOffset2);
-					SmartDashboard.putNumber("Proper Angle", Math.atan(Math.log(-373*(distance * distance - 938.338 * distance - 33746.6))-17.0344));
+					SmartDashboard.putNumber("Proper Angle", lastAngle);
 				}
 			} else {
-				//System.out.println("Target Not Found");
+				noTarget();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	private void noTarget() {
+		lastHorizontal = Double.NaN;
+		lastDistance = Double.NaN;
+		lastAngle = Double.NaN;
+		SmartDashboard.putNumber("Distance", Double.NaN);
+		SmartDashboard.putNumber("H1", Double.NaN);
+		SmartDashboard.putNumber("H2", Double.NaN);
+		SmartDashboard.putNumber("Proper Angle", Double.NaN);
 	}
 
 }
