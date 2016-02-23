@@ -52,7 +52,7 @@ public class VisionCalculations {
 				} else {
 					//System.out.println("D: " + distance + "  h1: " + horizontalOffset1 + " h2: " + horizontalOffset2);
 					//System.out.println("Too low by: " + (shootAngle - (1.5707963268 + Robot.robotIO.shooterArmEncoder.getDistance())));
-					lastAngle = Math.atan(Math.log(-373*(distance * distance - 938.338 * distance - 33746.6))-17.0344);
+					lastAngle = -Math.atan(Math.log(-373*(distance * distance - 938.338 * distance - 33746.6))-17.0344);
 					lastHorizontal = horizontalOffset1;
 					lastDistance = distance;
 					SmartDashboard.putNumber("Distance", distance);
