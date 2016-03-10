@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team484.robot;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -65,6 +66,14 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         visionCalc.run();
         SmartDashboard.putNumber("Arm Angle", shooterArm.getArmAngle());
+        SmartDashboard.putNumber("Current", robotIO.pdp.getTotalCurrent());
+        SmartDashboard.putNumber("irR", robotIO.rightBallIR.getAverageVoltage());
+        SmartDashboard.putNumber("irL", robotIO.leftBallIR.getAverageVoltage());
+        SmartDashboard.putNumber("irBall", robotIO.ballInIR.getAverageVoltage());
+        SmartDashboard.putNumber("camera", robotIO.driverStick.getZ());
+        SmartDashboard.putBoolean("is in", shooterPiston.ballInShooter());
+        SmartDashboard.putNumber("camera IR", robotIO.cameraIR.getAverageVoltage());
+        	robotIO.cameraServo.set(robotIO.driverStick.getZ());
     }
     
     public void testPeriodic() {

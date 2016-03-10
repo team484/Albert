@@ -19,6 +19,8 @@ public class RobotMap {
 	public static int climberLeftMotor = 9; //Victor in PWM slot
 	public static int climberRightMotor = 10; //Victor in PWM slot
 	
+	public static int cameraServo = 5;
+	
 	//------Solenoids-----
 	public static int shooterPistonExtend = 0; //solenoid in PCM slot
 	public static int shooterPistonRetract = 1; //solenoid in PCM slot
@@ -29,6 +31,8 @@ public class RobotMap {
 	
 	public static int leftBallIR = 2; //Analog Input in Analog IO slot
 	public static int rightBallIR = 3; //Analog Input in Analog IO slot
+	public static int ballInIR = 4;
+	public static int cameraIR = 5;
 	
 	public static int driveEncoderA = 0; //Encoder in Digital IO slot
 	public static int driveEncoderB = 1; //Encoder in Digital IO slot

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team484.robot;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -8,6 +9,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -25,6 +27,7 @@ public class RobotIO {
 	public CANTalon shooterLeftWheelMotor;
 	public CANTalon shooterRightWheelMotor;
 	
+	public Servo cameraServo;
 	//------Solenoids-----
 	public Solenoid shooterPistonExtend;
 	public Solenoid shooterPistonRetract;
@@ -33,6 +36,11 @@ public class RobotIO {
 	//-------Sensors------
 	public AnalogGyro topGyro;
 	public AnalogGyro bottomGyro;
+	
+	public AnalogInput leftBallIR;
+	public AnalogInput rightBallIR;
+	public AnalogInput ballInIR;
+	public AnalogInput cameraIR;
 	
 	public Encoder driveEncoder;
 	public Encoder shooterArmEncoder;
@@ -62,6 +70,7 @@ public class RobotIO {
 		shooterLeftWheelMotor.setVoltageRampRate(RobotSettings.shooterWheelsVoltageRampRate);
 		shooterRightWheelMotor.setVoltageRampRate(RobotSettings.shooterWheelsVoltageRampRate);
 		
+		cameraServo = new Servo(RobotMap.cameraServo);
 		//------Solenoids-----
 		shooterPistonExtend = new Solenoid(RobotMap.shooterPistonExtend);
 		shooterPistonRetract = new Solenoid(RobotMap.shooterPistonRetract);
@@ -71,6 +80,11 @@ public class RobotIO {
 		topGyro = new AnalogGyro(RobotMap.topGyro);
 		bottomGyro = new AnalogGyro(RobotMap.bottomGyro);
 
+		leftBallIR = new AnalogInput(RobotMap.leftBallIR);
+		rightBallIR = new AnalogInput(RobotMap.rightBallIR);
+		ballInIR = new AnalogInput(RobotMap.ballInIR);
+		cameraIR = new AnalogInput(RobotMap.cameraIR);
+		
 		driveEncoder = new Encoder(RobotMap.driveEncoderA, RobotMap.driveEncoderB);
 		driveEncoder.setDistancePerPulse(RobotSettings.drivetrainDistancePerEncoderPulse);
 		shooterArmEncoder = new Encoder(RobotMap.shooterArmEncoderA,RobotMap.shooterArmEncoderB);

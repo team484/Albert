@@ -16,7 +16,11 @@ public class ShooterArm extends Subsystem {
     }
     
     public void shooterArmWithJoystick() {
-    	adjustedShooterArmValue(Robot.robotIO.operatorStick.getY());
+    	if (Robot.robotIO.operatorStick.getRawButton(4)) {
+    		Robot.robotIO.shooterArmMotor.set(Robot.robotIO.operatorStick.getY());
+    	} else {
+    		adjustedShooterArmValue(Robot.robotIO.operatorStick.getY());
+    	}
     	
     }
     

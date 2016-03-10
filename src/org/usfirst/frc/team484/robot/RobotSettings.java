@@ -18,7 +18,7 @@ public class RobotSettings {
 	//Shooter Wheels Settings
 	public static final double shooterWheelsShootSpeedLeft = 10.2; //0.8
 	public static final double shooterWheelsShootSpeedRight = -shooterWheelsShootSpeedLeft;
-	public static final double shooterWheelsIntakeSpeedLeft = -5; //0.5
+	public static final double shooterWheelsIntakeSpeedLeft = -6; //-5
 	public static final double shooterWheelsIntakeSpeedRight = -shooterWheelsIntakeSpeedLeft;
 	public static final double shooterWheelsVoltageRampRate = 24.0;
 	

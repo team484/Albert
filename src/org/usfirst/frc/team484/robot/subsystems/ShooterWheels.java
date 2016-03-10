@@ -24,7 +24,10 @@ public class ShooterWheels extends Subsystem {
     	Robot.robotIO.shooterLeftWheelMotor.set(RobotSettings.shooterWheelsIntakeSpeedLeft);
     	Robot.robotIO.shooterRightWheelMotor.set(RobotSettings.shooterWheelsIntakeSpeedRight);
     }
-    
+    public void shooterWheelsSlow() {
+    	Robot.robotIO.shooterLeftWheelMotor.set(RobotSettings.shooterWheelsShootSpeedLeft / 1.7);
+    	Robot.robotIO.shooterRightWheelMotor.set(RobotSettings.shooterWheelsShootSpeedRight / 1.7);
+    }
     public void shooterWheelsDoNothing() {
     	Robot.robotIO.shooterLeftWheelMotor.set(0);
     	Robot.robotIO.shooterRightWheelMotor.set(0);

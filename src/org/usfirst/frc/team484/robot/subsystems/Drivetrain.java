@@ -13,7 +13,22 @@ public class Drivetrain extends Subsystem {
     public void initDefaultCommand() {
     	setDefaultCommand(new DriveWithJoystick());
     }
-    
+    public void findBall() {
+    	double min = 0.0;
+    	if (Robot.robotIO.leftBallIR.getAverageVoltage() > min && Robot.robotIO.rightBallIR.getAverageVoltage() <= min) {
+    		setDrive(0, -0.5);
+    	} else if (Robot.robotIO.rightBallIR.getAverageVoltage() > min && Robot.robotIO.leftBallIR.getAverageVoltage() <= min) {
+    		setDrive(0, 0.5);
+    	} else if (Robot.robotIO.leftBallIR.getAverageVoltage() > min && Robot.robotIO.rightBallIR.getAverageValue() > min) {
+    		if (Robot.robotIO.leftBallIR.getAverageVoltage() > Robot.robotIO.rightBallIR.getAverageVoltage()) {
+    			setDrive(0, -0.4);
+    		} else {
+    			setDrive(0, 0.4);
+    		}
+    	} else {
+    		setDrive(0.5, 0.0);
+    	}
+    }
     public void driveWithJoysticks() {
     	setDrive(-Robot.robotIO.driverStick.getY(), Robot.robotIO.driverStick.getX());
     }

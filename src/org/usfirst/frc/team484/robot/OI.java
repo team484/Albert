@@ -7,6 +7,7 @@ import org.usfirst.frc.team484.robot.commands.ShooterPistonRetract;
 import org.usfirst.frc.team484.robot.commands.ShooterWheelsDoNothing;
 import org.usfirst.frc.team484.robot.commands.ShooterWheelsIntake;
 import org.usfirst.frc.team484.robot.commands.ShooterWheelsShoot;
+import org.usfirst.frc.team484.robot.commands.ShooterWheelsSlow;
 import org.usfirst.frc.team484.robot.commands.TargetedShoot;
 
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -20,6 +21,7 @@ public class OI {
 	Button armHorizontal = new JoystickButton(Robot.robotIO.operatorStick, 10);
 	Button rotate90 = new JoystickButton(Robot.robotIO.driverStick, 11);
 	Button testAim = new JoystickButton(Robot.robotIO.operatorStick, 8);
+	Button shootSlow = new JoystickButton(Robot.robotIO.operatorStick, 5);
  
 	public OI() {
 		prepareToShoot.whileHeld(new ShooterWheelsShoot());
@@ -29,6 +31,7 @@ public class OI {
 		intake.whenReleased(new ShooterPistonRetract());
 		shoot.whileHeld(new ShooterPistonExtend());
 		shoot.whenReleased(new ShooterPistonRetract());
+		shootSlow.whileHeld(new ShooterWheelsSlow());
 		
 		armVertical.whileHeld(new ShooterArmToAngle(0));
 		armHorizontal.whileHeld(new ShooterArmToAngle(-1.570796));
