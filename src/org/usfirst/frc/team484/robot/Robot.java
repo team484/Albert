@@ -1,7 +1,6 @@
 
 package org.usfirst.frc.team484.robot;
 
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -12,7 +11,6 @@ import org.usfirst.frc.team484.robot.subsystems.ShooterArm;
 import org.usfirst.frc.team484.robot.subsystems.ShooterPiston;
 import org.usfirst.frc.team484.robot.subsystems.ShooterWheels;
 
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**

@@ -9,9 +9,26 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Drivetrain extends Subsystem {
-
+	public int onTargetCounter = 11;
     public void initDefaultCommand() {
     	setDefaultCommand(new DriveWithJoystick());
+    }
+    public boolean lineUpHighGoal() {
+    	double offset = Robot.visionCalc.lastHorizontal;
+    	if (Math.abs(offset) < 3) {
+    		onTargetCounter++;
+    	} else if (offset > 0) {
+    		setDrive(0, -0.5);
+    		onTargetCounter = 0;
+    	} else if (offset < 0) {
+    		setDrive(0, 0.5);
+    		onTargetCounter = 0;
+    	}
+    	if (onTargetCounter > 10) {
+    		return true;
+    	} else {
+    		return false;
+    	}
     }
     public void findBall() {
     	double min = 0.0;
@@ -21,9 +38,9 @@ public class Drivetrain extends Subsystem {
     		setDrive(0, 0.5);
     	} else if (Robot.robotIO.leftBallIR.getAverageVoltage() > min && Robot.robotIO.rightBallIR.getAverageValue() > min) {
     		if (Robot.robotIO.leftBallIR.getAverageVoltage() > Robot.robotIO.rightBallIR.getAverageVoltage()) {
-    			setDrive(0, -0.4);
+    			setDrive(0, -0.2);
     		} else {
-    			setDrive(0, 0.4);
+    			setDrive(0, 0.2);
     		}
     	} else {
     		setDrive(0.5, 0.0);

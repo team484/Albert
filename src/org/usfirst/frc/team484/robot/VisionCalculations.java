@@ -10,7 +10,7 @@ public class VisionCalculations {
 	private double cameraHorizontalOffset = 11.59375;
 	private double cameraImageWidth = 640.0;
 	private double cameraImageHeight = 480.0;
-	private double cameraAngleUp = 0.376; //0.0174533 converts to radians
+	private double cameraAngleUp = 0.376;
 	private double heightOfGoalCenter = 89.25;
 	private double goalWidth = 20;
 
@@ -18,7 +18,6 @@ public class VisionCalculations {
 	public double lastDistance = Double.NaN;
 	public double lastAngle = Double.NaN;
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		new VisionCalculations().run();
 	}
 	public void run() {
