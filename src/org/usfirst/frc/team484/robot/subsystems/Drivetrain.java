@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Drivetrain extends Subsystem {
 	public int onTargetCounter = 11;
+	double timeSinceBall = 0;
+	boolean wasLeft = false;
     public void initDefaultCommand() {
     	setDefaultCommand(new DriveWithJoystick());
     }
@@ -31,19 +33,30 @@ public class Drivetrain extends Subsystem {
     	}
     }
     public void findBall() {
-    	double min = 0.0;
+    	double min = 0.7;
+    	if (timeSinceBall > 27) {
+    		timeSinceBall = 27;
+    	}
     	if (Robot.robotIO.leftBallIR.getAverageVoltage() > min && Robot.robotIO.rightBallIR.getAverageVoltage() <= min) {
-    		setDrive(0, -0.5);
-    	} else if (Robot.robotIO.rightBallIR.getAverageVoltage() > min && Robot.robotIO.leftBallIR.getAverageVoltage() <= min) {
-    		setDrive(0, 0.5);
-    	} else if (Robot.robotIO.leftBallIR.getAverageVoltage() > min && Robot.robotIO.rightBallIR.getAverageValue() > min) {
-    		if (Robot.robotIO.leftBallIR.getAverageVoltage() > Robot.robotIO.rightBallIR.getAverageVoltage()) {
-    			setDrive(0, -0.2);
-    		} else {
-    			setDrive(0, 0.2);
+    		timeSinceBall++;
+    		if (!wasLeft) {
+    			wasLeft = true;
+    			timeSinceBall = 0;
     		}
+    		setDrive(0.3, -0.04 * timeSinceBall);
+    	} else if (Robot.robotIO.rightBallIR.getAverageVoltage() > min && Robot.robotIO.leftBallIR.getAverageVoltage() <= min) {
+    		timeSinceBall++;
+    		if (wasLeft) {
+    			wasLeft = false;
+    			timeSinceBall = 0;
+    		}
+    		setDrive(0.3, 0.04 * timeSinceBall);
+    	} else if (Robot.robotIO.leftBallIR.getAverageVoltage() > min && Robot.robotIO.rightBallIR.getAverageValue() > min) {
+    		timeSinceBall = 0;
+    		setDrive(0.7, 0.0);
     	} else {
-    		setDrive(0.5, 0.0);
+    		timeSinceBall = 0;
+    		setDrive(0.7, 0.0);
     	}
     }
     public void driveWithJoysticks() {

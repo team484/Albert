@@ -1,5 +1,7 @@
 package org.usfirst.frc.team484.robot;
 
+import org.usfirst.frc.team484.robot.commands.DriveWithJoystick;
+import org.usfirst.frc.team484.robot.commands.FindBall;
 import org.usfirst.frc.team484.robot.commands.RotateAngle;
 import org.usfirst.frc.team484.robot.commands.ShooterArmToAngle;
 import org.usfirst.frc.team484.robot.commands.ShooterPistonExtend;
@@ -22,6 +24,7 @@ public class OI {
 	Button rotate90 = new JoystickButton(Robot.robotIO.driverStick, 11);
 	Button testAim = new JoystickButton(Robot.robotIO.operatorStick, 8);
 	Button shootSlow = new JoystickButton(Robot.robotIO.operatorStick, 5);
+	Button getBall = new JoystickButton(Robot.robotIO.driverStick, 6);
  
 	public OI() {
 		prepareToShoot.whileHeld(new ShooterWheelsShoot());
@@ -37,6 +40,8 @@ public class OI {
 		armHorizontal.whileHeld(new ShooterArmToAngle(-1.570796));
 		rotate90.whileHeld(new RotateAngle(90.0));
 		testAim.whileHeld(new TargetedShoot());
+		getBall.whileHeld(new FindBall());
+		getBall.whenReleased(new DriveWithJoystick());
 	}
 }
 
