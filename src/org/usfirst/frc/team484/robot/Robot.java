@@ -71,6 +71,7 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("camera", robotIO.driverStick.getZ());
         SmartDashboard.putBoolean("is in", shooterPiston.ballInShooter());
         SmartDashboard.putNumber("camera IR", robotIO.cameraIR.getAverageVoltage());
+        SmartDashboard.putNumber("Distance Traveled: ", drivetrain.currentDistance());
         	robotIO.cameraServo.set(robotIO.driverStick.getZ());
     }
     

@@ -23,7 +23,7 @@ public class RobotSettings {
 	public static final double shooterWheelsVoltageRampRate = 24.0;
 	
 	//Shooter Arm Settings
-	public static final double shooterArmEncoderAnglePerPulse = 0.026511; //radians
+	public static final double shooterArmEncoderAnglePerPulse = 0.0187; //0.026511
 	public static final double shooterArmUpSpeedDivisor = 3.0;
 	public static final double shooterArmDownSpeedDivisor = 4.0;
 	public static final double shooterArmGravityCompensationCoefficient = 0.1;
