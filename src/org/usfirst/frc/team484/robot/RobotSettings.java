@@ -29,6 +29,7 @@ public class RobotSettings {
 	public static final double shooterArmGravityCompensationCoefficient = 0.1;
 	public static final double shooterArmVoltageTarget = 12.0; //Will compensate by lowering voltages to this value
 	public static final double shooterArmTargetSpeed = 0.5;
+	public static final double shooterArmAngleStart = 0.0; //Vertical is 0 horizontal is -1.57
 	
 	public static final double drivetrainDistancePerEncoderPulse = -0.0966748;
 	public static final boolean invertDrivetrain = true;

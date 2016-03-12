@@ -36,7 +36,7 @@ public class ShooterArm extends Subsystem {
     }
     
     public double getArmAngle() {
-    	return Robot.robotIO.shooterArmEncoder.getDistance();
+    	return Robot.robotIO.shooterArmEncoder.getDistance() + RobotSettings.shooterArmAngleStart;
     }
 }
 
