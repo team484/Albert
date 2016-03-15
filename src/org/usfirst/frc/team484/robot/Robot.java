@@ -22,6 +22,7 @@ import org.usfirst.frc.team484.robot.commands.AutoShootHigh3;
 import org.usfirst.frc.team484.robot.commands.AutoShootHigh4;
 import org.usfirst.frc.team484.robot.commands.AutoShootHigh5;
 import org.usfirst.frc.team484.robot.commands.AutoShootNothing;
+import org.usfirst.frc.team484.robot.subsystems.CameraServo;
 import org.usfirst.frc.team484.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team484.robot.subsystems.ShooterArm;
 import org.usfirst.frc.team484.robot.subsystems.ShooterPiston;
@@ -45,6 +46,7 @@ public class Robot extends IterativeRobot {
 	public static final ShooterWheels shooterWheels = new ShooterWheels();
 	public static final ShooterPiston shooterPiston = new ShooterPiston();
 	public static final VisionCalculations visionCalc = new VisionCalculations();
+	public static final CameraServo cameraServo = new CameraServo();
 	public static OI oi;
 	CameraServer camera;
 
@@ -115,7 +117,6 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putBoolean("is in", shooterPiston.ballInShooter());
         SmartDashboard.putNumber("camera IR", robotIO.cameraIR.getAverageVoltage());
         SmartDashboard.putNumber("Distance Traveled: ", drivetrain.currentDistance());
-        	robotIO.cameraServo.set(robotIO.driverStick.getZ());
     }
     
     public void testPeriodic() {
