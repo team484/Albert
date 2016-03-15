@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import org.usfirst.frc.team484.robot.subsystems.CameraServo;
 import org.usfirst.frc.team484.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team484.robot.subsystems.ShooterArm;
 import org.usfirst.frc.team484.robot.subsystems.ShooterPiston;
@@ -28,6 +29,7 @@ public class Robot extends IterativeRobot {
 	public static final ShooterWheels shooterWheels = new ShooterWheels();
 	public static final ShooterPiston shooterPiston = new ShooterPiston();
 	public static final VisionCalculations visionCalc = new VisionCalculations();
+	public static final CameraServo cameraServo = new CameraServo();
 	public static OI oi;
 	CameraServer camera;
 
@@ -71,7 +73,6 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("camera", robotIO.driverStick.getZ());
         SmartDashboard.putBoolean("is in", shooterPiston.ballInShooter());
         SmartDashboard.putNumber("camera IR", robotIO.cameraIR.getAverageVoltage());
-        	robotIO.cameraServo.set(robotIO.driverStick.getZ());
     }
     
     public void testPeriodic() {

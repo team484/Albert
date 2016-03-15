@@ -33,4 +33,12 @@ public class RobotSettings {
 	
 	public static final double drivetrainDistancePerEncoderPulse = -0.0966748;
 	public static final boolean invertDrivetrain = true;
+	
+	
+	
+	//Camera Servo Settings
+	public static final double camRetractedAngle = 0.0;
+	public static final double camMaxAngleForRetraction = 0.0;
+	public static final double camMinAngleForRetraction = 0.0;
+	public static final double armAngleForCameraRetraction = 0.0;
 }
