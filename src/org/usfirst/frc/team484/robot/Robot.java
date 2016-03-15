@@ -7,26 +7,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
-import org.usfirst.frc.team484.robot.commands.AutoCrossChevalDeFrise;
-import org.usfirst.frc.team484.robot.commands.AutoCrossLowBar;
-import org.usfirst.frc.team484.robot.commands.AutoCrossMoat;
-import org.usfirst.frc.team484.robot.commands.AutoCrossNothing;
-import org.usfirst.frc.team484.robot.commands.AutoCrossPortcullis;
-import org.usfirst.frc.team484.robot.commands.AutoCrossRamparts;
-import org.usfirst.frc.team484.robot.commands.AutoCrossRockWall;
-import org.usfirst.frc.team484.robot.commands.AutoCrossRoughTerrain;
-import org.usfirst.frc.team484.robot.commands.AutoCrossSallyPort;
-import org.usfirst.frc.team484.robot.commands.AutoShootHigh1;
-import org.usfirst.frc.team484.robot.commands.AutoShootHigh2;
-import org.usfirst.frc.team484.robot.commands.AutoShootHigh3;
-import org.usfirst.frc.team484.robot.commands.AutoShootHigh4;
-import org.usfirst.frc.team484.robot.commands.AutoShootHigh5;
-import org.usfirst.frc.team484.robot.commands.AutoShootNothing;
-import org.usfirst.frc.team484.robot.subsystems.CameraServo;
-import org.usfirst.frc.team484.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team484.robot.subsystems.ShooterArm;
-import org.usfirst.frc.team484.robot.subsystems.ShooterPiston;
-import org.usfirst.frc.team484.robot.subsystems.ShooterWheels;
+import org.usfirst.frc.team484.robot.commands.*;
+import org.usfirst.frc.team484.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
