@@ -73,7 +73,6 @@ public class Robot extends IterativeRobot {
 	        autoCrossChooser.addObject("Ramparts", new AutoCrossRamparts()); //adds ramparts as an option for crossing
 	        autoCrossChooser.addObject("RockWall", new AutoCrossRockWall()); //adds rock wall as an option for crossing
 	        autoCrossChooser.addObject("RoughTerrain", new AutoCrossRoughTerrain()); //adds rough terrain as an option for crossing
-	        autoCrossChooser.addObject("SallyPort", new AutoCrossSallyPort()); //adds sally port as an option for crossing
 	        SmartDashboard.putData("Auto Defence", autoCrossChooser); //Places the choose menu for selecting a crossing command on the dashboard
 	        
 	        autoShootChooser = new SendableChooser(); //Initializes the choose menu for selecting shooting command
