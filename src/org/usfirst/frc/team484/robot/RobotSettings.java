@@ -23,7 +23,7 @@ public class RobotSettings {
 	public static final double shooterWheelsVoltageRampRate = 24.0;
 	
 	//Shooter Arm Settings
-	public static final double shooterArmEncoderAnglePerPulse = 0.0187; //0.026511
+	public static final double shooterArmEncoderAnglePerPulse = 0.026511; //0.0187
 	public static final double shooterArmUpSpeedDivisor = 3.0;
 	public static final double shooterArmDownSpeedDivisor = 4.0;
 	public static final double shooterArmGravityCompensationCoefficient = 0.1;
@@ -32,13 +32,12 @@ public class RobotSettings {
 	public static final double shooterArmAngleStart = 0.0; //Vertical is 0 horizontal is -1.57
 	
 	public static final double drivetrainDistancePerEncoderPulse = -0.0966748;
-	public static final boolean invertDrivetrain = true;
-	
+	public static final boolean invertDrivetrain = false;
 	
 	
 	//Camera Servo Settings
-	public static final double camRetractedAngle = 0.0;
-	public static final double camMaxAngleForRetraction = 0.0;
-	public static final double camMinAngleForRetraction = 0.0;
-	public static final double armAngleForCameraRetraction = 0.0;
+	public static final double camRetractedAngle = 0.0; //setpoint for servo when camera should be retracted
+	public static final double camMaxAngleForRetraction = 0.0; //max setpoint for servo that hits brace
+	public static final double camMinAngleForRetraction = 0.0; //min setpoint for servo that hits brace
+	public static final double armAngleForCameraRetraction = 0.0; //arm angle where camera is about to hit
 }

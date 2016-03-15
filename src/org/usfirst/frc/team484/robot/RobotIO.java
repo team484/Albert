@@ -28,10 +28,10 @@ public class RobotIO {
 	public CANTalon shooterRightWheelMotor;
 	
 	public Servo cameraServo;
+	
 	//------Solenoids-----
 	public Solenoid shooterPistonExtend;
 	public Solenoid shooterPistonRetract;
-	
 	
 	//-------Sensors------
 	public AnalogGyro topGyro;
@@ -48,7 +48,6 @@ public class RobotIO {
 	//-----Joysticks-----
 	public Joystick driverStick;
 	public Joystick operatorStick;
-	
 	
 	//-------Misc--------
 	public RobotDrive driveRobot;

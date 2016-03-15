@@ -13,36 +13,32 @@ import org.usfirst.frc.team484.robot.subsystems.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the IterativeRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the manifest file in the resource
- * directory.
- */
 public class Robot extends IterativeRobot {
 
 	public static final RobotIO robotIO = new RobotIO(); //Initializing robotIO, a class which initializes all IO on the robot
+	
+	//Initialization of all subsystems
 	public static final Drivetrain drivetrain = new Drivetrain();
 	public static final ShooterArm shooterArm = new ShooterArm();
 	public static final ShooterWheels shooterWheels = new ShooterWheels();
 	public static final ShooterPiston shooterPiston = new ShooterPiston();
 	public static final VisionCalculations visionCalc = new VisionCalculations();
 	public static final CameraServo cameraServo = new CameraServo();
-	public static OI oi;
-	CameraServer camera;
+	
+	public static OI oi; //Class for mapping joystick buttons
+	CameraServer camera; //USB webcam object
 
 	Command autoCrossCommand; //Creates command for crossing the defenses
-    Command autoShootCommand; //Creates a command for shooting after the cross
+    Command autoShootCommand; //Creates command for shooting after the cross
     SendableChooser autoCrossChooser; //Creates a choose menu for selecting crossing command on dashboard
     SendableChooser autoShootChooser; //Creates a choose menu for selecting shooting command on dashboard
 
     public void robotInit() {
-		oi = new OI();
-		robotIO.airCompressor.start();
+		oi = new OI(); //initializes joystick button maps
+		robotIO.airCompressor.start(); //turns on compressor
 		try {
-			camera = CameraServer.getInstance();
-			camera.startAutomaticCapture("cam1");
+			camera = CameraServer.getInstance(); //starts USB camera server
+			camera.startAutomaticCapture("cam1"); //assigns camera to camera server
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -88,7 +84,9 @@ public class Robot extends IterativeRobot {
 
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        visionCalc.run();
+        visionCalc.run(); //Interprets vision processing results
+        
+        //Broadcast smartdashboard values
         SmartDashboard.putNumber("Arm Angle", shooterArm.getArmAngle());
         SmartDashboard.putNumber("Current", robotIO.pdp.getTotalCurrent());
         SmartDashboard.putNumber("irR", robotIO.rightBallIR.getAverageVoltage());
