@@ -9,6 +9,7 @@ public class AutoShootHigh3 extends CommandGroup {
     
     public  AutoShootHigh3() {
     	addSequential(new RotateAngle(16.0));
+    	addSequential(new AutoShootWithVision());
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

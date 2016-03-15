@@ -10,6 +10,7 @@ public class AutoShootHigh1 extends CommandGroup {
     public  AutoShootHigh1() {
     	addSequential(new DriveDistance(84.0));
     	addSequential(new RotateAngle(72.3));
+    	addSequential(new AutoShootWithVision());
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
