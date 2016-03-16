@@ -26,7 +26,7 @@ public class RobotSettings {
 	public static final double shooterArmEncoderAnglePerPulse = 0.026511; //0.0187
 	public static final double shooterArmUpSpeedDivisor = 3.0;
 	public static final double shooterArmDownSpeedDivisor = 4.0;
-	public static final double shooterArmGravityCompensationCoefficient = 0.1;
+	public static final double shooterArmGravityCompensationCoefficient = 0.07;
 	public static final double shooterArmVoltageTarget = 12.0; //Will compensate by lowering voltages to this value
 	public static final double shooterArmTargetSpeed = 0.5;
 	public static final double shooterArmAngleStart = 0.0; //Vertical is 0 horizontal is -1.57
