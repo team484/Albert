@@ -22,7 +22,11 @@ public class CameraServo extends Subsystem {
     	double cameraAngle = Robot.robotIO.driverStick.getZ();
     	if (Robot.shooterArm.getArmAngle() > RobotSettings.armAngleForCameraRetraction) {
     		if (RobotSettings.camMaxAngleForRetraction > cameraAngle && RobotSettings.camMinAngleForRetraction < cameraAngle) {
+    			if (Math.abs(cameraAngle - RobotSettings.camRetractedAngle) < Math.abs(cameraAngle - RobotSettings.camRetractedAngle2)) {
     			Robot.robotIO.cameraServo.set(RobotSettings.camRetractedAngle);
+    			} else {
+    				Robot.robotIO.cameraServo.set(RobotSettings.camRetractedAngle2);
+    			}
     		} else {
     			Robot.robotIO.cameraServo.set(cameraAngle);
     		}

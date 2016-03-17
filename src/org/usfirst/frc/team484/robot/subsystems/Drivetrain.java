@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Drivetrain extends Subsystem {
-	public int onTargetCounter = 11;
 	double timeSinceBall = 0;
 	boolean wasLeft = false;
     public void initDefaultCommand() {
@@ -17,20 +16,15 @@ public class Drivetrain extends Subsystem {
     }
     public boolean lineUpHighGoal() {
     	double offset = Robot.visionCalc.lastHorizontal;
+    	double offsetMod = offset;
     	if (Math.abs(offset) < 3) {
-    		onTargetCounter++;
-    	} else if (offset > 0) {
-    		setDrive(0, -0.5);
-    		onTargetCounter = 0;
-    	} else if (offset < 0) {
-    		setDrive(0, 0.5);
-    		onTargetCounter = 0;
-    	}
-    	if (onTargetCounter > 10) {
     		return true;
-    	} else {
-    		return false;
+    	} else if (offset > 0) {
+    		setDrive(0, -1.0 * (Math.abs(offset) / 150.0 + 0.5));
+    	} else if (offset < 0) {
+    		setDrive(0, (Math.abs(offset) / 150.0 + 0.5));
     	}
+    	return false;
     }
     public void findBall() {
     	double min = 0.7;

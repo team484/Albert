@@ -14,7 +14,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {
-
+	private static boolean commandWasRunning = true;
+	public static boolean part1AutoDone = false;
 	public static final RobotIO robotIO = new RobotIO(); //Initializing robotIO, a class which initializes all IO on the robot
 	
 	//Initialization of all subsystems
@@ -38,7 +39,7 @@ public class Robot extends IterativeRobot {
 		robotIO.airCompressor.start(); //turns on compressor
 		try {
 			camera = CameraServer.getInstance(); //starts USB camera server
-			camera.startAutomaticCapture("cam1"); //assigns camera to camera server
+			camera.startAutomaticCapture("cam3"); //assigns camera to camera server
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -73,10 +74,19 @@ public class Robot extends IterativeRobot {
 	}
 
     public void autonomousInit() {
+    	autoCrossCommand = (Command) autoCrossChooser.getSelected();
+    	autoShootCommand = (Command) autoShootChooser.getSelected();
+    	autoCrossCommand.start();
+    	commandWasRunning = true;
+    	part1AutoDone = false;
     }
 
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        if (autoCrossCommand!= null) { if (commandWasRunning && part1AutoDone) {
+        	commandWasRunning = false;
+        	if (autoShootCommand != null) autoShootCommand.start();
+        } }
     }
 
     public void teleopInit() {

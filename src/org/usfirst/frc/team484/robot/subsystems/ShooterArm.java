@@ -25,6 +25,9 @@ public class ShooterArm extends Subsystem {
     }
     
     public void adjustedShooterArmValue(double speed) {
+    	if (speed >= 0 && Math.abs(getArmAngle()) < 0.03 ) {
+    		Robot.robotIO.shooterArmMotor.set(0.2);
+    	} else {
     	double modSpeed;
     	if (speed > 0) {
     		modSpeed = speed / RobotSettings.shooterArmUpSpeedDivisor;
@@ -33,6 +36,8 @@ public class ShooterArm extends Subsystem {
     	}
     	modSpeed = modSpeed * RobotSettings.shooterArmVoltageTarget / Robot.robotIO.pdp.getVoltage();
     	Robot.robotIO.shooterArmMotor.set(modSpeed - RobotSettings.shooterArmGravityCompensationCoefficient * Math.sin(getArmAngle()));
+    
+    	}
     }
     
     public double getArmAngle() {

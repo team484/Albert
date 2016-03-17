@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoShootWithVision extends CommandGroup {
     
     public  AutoShootWithVision() {
+    	addSequential(new ShooterArmToAngle(0.0), 5);
     	addSequential(new LineUpHighGoal());
     	addSequential(new TargetedShoot());
         // Add Commands here:
