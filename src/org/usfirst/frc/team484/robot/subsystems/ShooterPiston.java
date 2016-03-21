@@ -31,7 +31,7 @@ public class ShooterPiston extends Subsystem {
     public boolean ballInShooter() {
     	boolean isIn = false;
     	if (Robot.robotIO.shooterPistonRetract.get()) {
-    		if (Robot.robotIO.ballInIR.getAverageVoltage() > 2.4 && Robot.robotIO.ballInIR.getAverageVoltage() < 3.2) {
+    		if (Robot.robotIO.ballInIR.getAverageVoltage() > 2.2 && Robot.robotIO.ballInIR.getAverageVoltage() < 3.2) {
     			isIn = true;
     		}
     	}

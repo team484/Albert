@@ -1,6 +1,7 @@
 package org.usfirst.frc.team484.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
@@ -8,7 +9,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoCrossMoat extends CommandGroup {
     
     public  AutoCrossMoat() {
-    	addSequential(new DriveDistance(148.5));
+    	addSequential(new PunchIt(), 10);
+    	addSequential(new WaitCommand(1),1);
+    	addSequential(new DriveDistance(30), 4);
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());

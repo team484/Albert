@@ -19,11 +19,11 @@ public class CameraServo extends Subsystem {
         setDefaultCommand(new CameraServoDial());
     }
     public void cameraServoDial() {
-    	double cameraAngle = Robot.robotIO.driverStick.getZ();
+    	double cameraAngle = 0.402;
     	if (Robot.shooterArm.getArmAngle() > RobotSettings.armAngleForCameraRetraction) {
     		if (RobotSettings.camMaxAngleForRetraction > cameraAngle && RobotSettings.camMinAngleForRetraction < cameraAngle) {
     			if (Math.abs(cameraAngle - RobotSettings.camRetractedAngle) < Math.abs(cameraAngle - RobotSettings.camRetractedAngle2)) {
-    			Robot.robotIO.cameraServo.set(RobotSettings.camRetractedAngle);
+    				Robot.robotIO.cameraServo.set(RobotSettings.camRetractedAngle);
     			} else {
     				Robot.robotIO.cameraServo.set(RobotSettings.camRetractedAngle2);
     			}

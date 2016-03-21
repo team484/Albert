@@ -5,6 +5,7 @@ import org.usfirst.frc.team484.robot.commands.FindBall;
 import org.usfirst.frc.team484.robot.commands.LineUpHighGoal;
 import org.usfirst.frc.team484.robot.commands.RotateAngle;
 import org.usfirst.frc.team484.robot.commands.ShooterArmToAngle;
+import org.usfirst.frc.team484.robot.commands.ShooterArmWithJoystick;
 import org.usfirst.frc.team484.robot.commands.ShooterPistonExtend;
 import org.usfirst.frc.team484.robot.commands.ShooterPistonRetract;
 import org.usfirst.frc.team484.robot.commands.ShooterWheelsDoNothing;
@@ -27,8 +28,11 @@ public class OI {
 	Button shootSlow = new JoystickButton(Robot.robotIO.operatorStick, 5);
 	Button getBall = new JoystickButton(Robot.robotIO.driverStick, 6);
 	Button horizontalLineup = new JoystickButton(Robot.robotIO.driverStick, 7);
+	Button shooterArmPickupAngle = new JoystickButton(Robot.robotIO.operatorStick, 9);
  
 	public OI() {
+		shooterArmPickupAngle.whileHeld(new ShooterArmToAngle(-1.64));
+		shooterArmPickupAngle.whenReleased(new ShooterArmWithJoystick());
 		prepareToShoot.whileHeld(new ShooterWheelsShoot());
 		prepareToShoot.whenReleased(new ShooterWheelsDoNothing());
 		intake.whileHeld(new ShooterWheelsIntake());

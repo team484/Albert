@@ -7,6 +7,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import java.io.IOException;
+
 import org.usfirst.frc.team484.robot.commands.*;
 import org.usfirst.frc.team484.robot.subsystems.*;
 
@@ -43,6 +45,11 @@ public class Robot extends IterativeRobot {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		//try {
+		//	new ProcessBuilder("/home/lvuser/grip").inheritIO().start();
+		//} catch (IOException e) {
+		//	e.printStackTrace();
+		//}
 		 autoCrossChooser = new SendableChooser(); //Initializes the choose menu for selecting crossing command
 	        autoCrossChooser.addDefault("Do Nothing", new AutoCrossNothing()); //adds do nothing as an option for crossing
 	        autoCrossChooser.addObject("ChevalDeFrise", new AutoCrossChevalDeFrise()); //adds cheval de frise as an option for crossing
