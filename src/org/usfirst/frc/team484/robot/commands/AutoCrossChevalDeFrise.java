@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoCrossChevalDeFrise extends CommandGroup {
     
     public  AutoCrossChevalDeFrise() {
+    	addSequential(new ZeroArm(), 0.7);
     	addSequential(new DriveDistance(45));
     	addSequential(new ShooterArmToGround(true), 2);
     	addParallel(new ShooterArmToGround(false));

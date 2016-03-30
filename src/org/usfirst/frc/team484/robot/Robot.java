@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
-import java.io.IOException;
 
 import org.usfirst.frc.team484.robot.commands.*;
 import org.usfirst.frc.team484.robot.subsystems.*;
@@ -19,7 +18,6 @@ public class Robot extends IterativeRobot {
 	private static boolean commandWasRunning = true;
 	public static boolean part1AutoDone = false;
 	public static final RobotIO robotIO = new RobotIO(); //Initializing robotIO, a class which initializes all IO on the robot
-	
 	//Initialization of all subsystems
 	public static final Drivetrain drivetrain = new Drivetrain();
 	public static final ShooterArm shooterArm = new ShooterArm();

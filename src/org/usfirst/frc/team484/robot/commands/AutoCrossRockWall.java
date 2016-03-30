@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoCrossRockWall extends CommandGroup {
     
     public  AutoCrossRockWall() {
+    	addSequential(new ZeroArm(), 0.7);
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

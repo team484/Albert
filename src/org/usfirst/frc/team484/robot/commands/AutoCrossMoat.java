@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 public class AutoCrossMoat extends CommandGroup {
     
     public  AutoCrossMoat() {
+    	addSequential(new ZeroArm(), 0.7);
     	addSequential(new PunchIt(), 10);
     	addSequential(new WaitCommand(1),1);
     	addSequential(new DriveDistance(30), 4);

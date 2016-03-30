@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoCrossRoughTerrain extends CommandGroup {
     
     public  AutoCrossRoughTerrain() {
+    	addSequential(new ZeroArm(), 0.7);
     	addSequential(new DriveDistance(155), 3.5);
     	addSequential(new Part1AutoDone(), 0.1);
         // Add Commands here:

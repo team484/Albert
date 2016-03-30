@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoCrossPortcullis extends CommandGroup {
     
     public  AutoCrossPortcullis() {
+    	addSequential(new ZeroArm(), 0.7);
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

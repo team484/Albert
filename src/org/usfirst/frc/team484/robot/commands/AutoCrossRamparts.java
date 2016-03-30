@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoCrossRamparts extends CommandGroup {
     
     public  AutoCrossRamparts() {
+    	addSequential(new ZeroArm(), 0.7);
     	addSequential(new DriveDistance(148.5));
         // Add Commands here:
         // e.g. addSequential(new Command1());

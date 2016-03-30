@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoCrossNothing extends CommandGroup {
     
     public  AutoCrossNothing() {
+    	addSequential(new ZeroArm(), 0.7);
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

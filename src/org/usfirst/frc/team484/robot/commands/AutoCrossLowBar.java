@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoCrossLowBar extends CommandGroup {
     
     public  AutoCrossLowBar() {
+    	addSequential(new ZeroArm(), 0.7);
     	addSequential(new ShooterArmToGround(true));
     	addSequential(new DriveDistance(148.5), 3.5);
     	addSequential(new Part1AutoDone(), 0.1);
