@@ -47,9 +47,9 @@ public class ShooterArm extends Subsystem {
 		double voltage = Robot.robotIO.pdp.getVoltage();
 		if (Robot.robotIO.shooterArmEncoder.getRate() > 0) {
 			maxOutput = 89.0 * maxTorque / (0.0867 * currentDraw * voltage);
-			minOutput = 89.0 * maxTorque / (0.0867 * (-2.0) * currentDraw * voltage);
+			minOutput = -89.0 * maxTorque / (0.0867 * (178.0 - currentDraw) * voltage);
 		} else if (Robot.robotIO.shooterArmEncoder.getRate() < 0) {
-			maxOutput = 89.0 * maxTorque / (0.0867 * (2.0) * currentDraw * voltage);
+			maxOutput = 89.0 * maxTorque / (0.0867 * (178.0 - currentDraw) * voltage);
 			minOutput = 89.0 * maxTorque / (0.0867 * (-1.0) * currentDraw * voltage);
 		} else {
 			maxOutput = 89.0 * maxTorque / (0.0867 * currentDraw * voltage);
