@@ -38,7 +38,6 @@ public class ShooterArm extends Subsystem {
 			Robot.robotIO.shooterArmMotor.set(adjustTorque(modSpeed - RobotSettings.shooterArmGravityCompensationCoefficient * Math.sin(getArmAngle())));
 		}
 	}
-	public double maxTorque = 0.25;
 	public double adjustTorque(double setValue) {
 		double outputValue = setValue;
 		double maxOutput = 0.0;
@@ -46,14 +45,14 @@ public class ShooterArm extends Subsystem {
 		double currentDraw = Robot.robotIO.pdp.getCurrent(1);
 		double voltage = Robot.robotIO.pdp.getVoltage();
 		if (Robot.robotIO.shooterArmEncoder.getRate() > 0) {
-			maxOutput = 89.0 * maxTorque / (0.0867 * currentDraw * voltage);
-			minOutput = -89.0 * maxTorque / (0.0867 * (178.0 - currentDraw) * voltage);
+			maxOutput = 89.0 * RobotSettings.shooterArmMaxTorque / (0.0867 * currentDraw * voltage);
+			minOutput = -89.0 * RobotSettings.shooterArmMaxTorque / (0.0867 * (178.0 - currentDraw) * voltage);
 		} else if (Robot.robotIO.shooterArmEncoder.getRate() < 0) {
-			maxOutput = 89.0 * maxTorque / (0.0867 * (178.0 - currentDraw) * voltage);
-			minOutput = 89.0 * maxTorque / (0.0867 * (-1.0) * currentDraw * voltage);
+			maxOutput = 89.0 * RobotSettings.shooterArmMaxTorque / (0.0867 * (178.0 - currentDraw) * voltage);
+			minOutput = 89.0 * RobotSettings.shooterArmMaxTorque / (0.0867 * (-1.0) * currentDraw * voltage);
 		} else {
-			maxOutput = 89.0 * maxTorque / (0.0867 * currentDraw * voltage);
-			minOutput = 89.0 * maxTorque / (0.0867 * (-1.0) * currentDraw * voltage);
+			maxOutput = 89.0 * RobotSettings.shooterArmMaxTorque / (0.0867 * currentDraw * voltage);
+			minOutput = 89.0 * RobotSettings.shooterArmMaxTorque / (0.0867 * (-1.0) * currentDraw * voltage);
 		}
 		if (outputValue > maxOutput) {
 			outputValue = maxOutput;
