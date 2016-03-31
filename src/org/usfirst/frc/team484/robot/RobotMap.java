@@ -44,4 +44,7 @@ public class RobotMap {
 	public static int driverStick = 0; //Port assigned to the driver stick on the driver station
 	public static int operatorStick = 1; //Port assigned to the operator stick on the driver station
 	
+	//----PDP Ports----
+	public static int shooterAromPDP = 1;
+	
 }

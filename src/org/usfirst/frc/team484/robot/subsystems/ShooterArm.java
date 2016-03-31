@@ -34,7 +34,7 @@ public class ShooterArm extends Subsystem {
 			} else {
 				modSpeed = speed / RobotSettings.shooterArmDownSpeedDivisor;
 			}
-			modSpeed = modSpeed * RobotSettings.shooterArmVoltageTarget / Robot.robotIO.pdp.getVoltage();
+			modSpeed = modSpeed * RobotSettings.shooterArmVoltageTarget / Robot.pdpVoltage;
 			Robot.robotIO.shooterArmMotor.set(adjustTorque(modSpeed - RobotSettings.shooterArmGravityCompensationCoefficient * Math.sin(getArmAngle())));
 		}
 	}
@@ -42,8 +42,9 @@ public class ShooterArm extends Subsystem {
 		double outputValue = setValue;
 		double maxOutput = 0.0;
 		double minOutput = 0.0;
-		double currentDraw = Robot.robotIO.pdp.getCurrent(1);
-		double voltage = Robot.robotIO.pdp.getVoltage();
+		double voltage = Robot.pdpVoltage;
+		double currentDraw = Robot.shooterArmCurrent;
+		if (currentDraw < 0.1) { currentDraw = 89; }
 		if (Robot.robotIO.shooterArmEncoder.getRate() > 0) {
 			maxOutput = 89.0 * RobotSettings.shooterArmMaxTorque / (0.0867 * currentDraw * voltage);
 			minOutput = -89.0 * RobotSettings.shooterArmMaxTorque / (0.0867 * (178.0 - currentDraw) * voltage);

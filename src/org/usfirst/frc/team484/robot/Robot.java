@@ -26,6 +26,10 @@ public class Robot extends IterativeRobot {
 	public static final VisionCalculations visionCalc = new VisionCalculations();
 	public static final CameraServo cameraServo = new CameraServo();
 	
+	public static double shooterArmCurrent = 0.0;
+	public static double pdpVoltage = 12.0;
+	private static int timeCounter = 0; //Used for updatePDPValues()
+	
 	public static OI oi; //Class for mapping joystick buttons
 	CameraServer camera; //USB webcam object
 
@@ -43,6 +47,7 @@ public class Robot extends IterativeRobot {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+    	robotIO.pdp.clearStickyFaults();
 		//try {
 		//	new ProcessBuilder("/home/lvuser/grip").inheritIO().start();
 		//} catch (IOException e) {
@@ -76,6 +81,7 @@ public class Robot extends IterativeRobot {
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		updatePDPValues();
 	}
 
     public void autonomousInit() {
@@ -88,6 +94,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        updatePDPValues();
         if (autoCrossCommand!= null) { if (commandWasRunning && part1AutoDone) {
         	commandWasRunning = false;
         	if (autoShootCommand != null) autoShootCommand.start();
@@ -99,6 +106,7 @@ public class Robot extends IterativeRobot {
 
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        updatePDPValues();
         visionCalc.run(); //Interprets vision processing results
         
         //Broadcast smartdashboard values
@@ -115,5 +123,12 @@ public class Robot extends IterativeRobot {
     
     public void testPeriodic() {
         LiveWindow.run();
+    }
+    public void updatePDPValues() {
+    	if (timeCounter % 2 == 0) {
+    		shooterArmCurrent = robotIO.pdp.getCurrent(RobotMap.shooterAromPDP);
+    		pdpVoltage = robotIO.pdp.getVoltage();
+    	}
+    	timeCounter++;
     }
 }
