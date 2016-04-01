@@ -8,9 +8,9 @@ package org.usfirst.frc.team484.robot;
 public class RobotMap {
 	//-------Motors-------
 	public static int frontLeftMotor = 0; //Talon in PWM slot
-	public static int rearLeftMotor = 1; //Talon in PWM slot
+	public static int rearLeftMotor = 3; //Talon in PWM slot
 	public static int frontRightMotor = 2; //Talon in PWM slot
-	public static int rearRightMotor = 3; //Talon in PWM slot
+	public static int rearRightMotor = 1; //Talon in PWM slot
 	
 	public static int shooterArmMotor = 4; //Talon in PWM slot
 	public static int shooterLeftWheelMotor = 0; //Might be changed for use with TalonSRX defined for PWM Talon

@@ -25,8 +25,8 @@ public class ShooterArm extends Subsystem {
 	}
 
 	public void adjustedShooterArmValue(double speed) {
-		if (speed >= 0 && Math.abs(getArmAngle() - RobotSettings.shooterArmAngleStart) < 0.06 ) {
-			Robot.robotIO.shooterArmMotor.set(0.12);
+		if (speed >= 0 && Math.abs(getArmAngle() - RobotSettings.shooterArmAngleStart) < 0.1 ) {
+			Robot.robotIO.shooterArmMotor.set(0.15);
 		} else {
 			double modSpeed;
 			if (speed > 0) {

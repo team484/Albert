@@ -38,9 +38,8 @@ public class RobotSettings {
 	
 	//Camera Servo Settings
 	public static final double camRetractedAngle = 0.0; //setpoint for servo when camera should be retracted
-	public static final double camRetractedAngle2 = 0.654;
-	public static final double camMaxAngleForRetraction = 0.6; //max setpoint for servo that hits brace
-	public static final double camMinAngleForRetraction = 0.09
-			; //min setpoint for servo that hits brace
-	public static final double armAngleForCameraRetraction = -0.85; //arm angle where camera is about to hit
+	public static final double camRetractedAngle2 = 0.5;
+	public static final double camMaxAngleForRetraction = 0.45; //max setpoint for servo that hits brace
+	public static final double camMinAngleForRetraction = 0.09; //min setpoint for servo that hits brace
+	public static final double armAngleForCameraRetraction = -0.70; //arm angle where camera is about to hit
 }
