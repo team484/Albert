@@ -9,6 +9,11 @@ public class AutoCrossPortcullis extends CommandGroup {
     
     public  AutoCrossPortcullis() {
     	addSequential(new ZeroArm(), 0.7);
+    	addSequential(new ShooterArmToAngle(-1.64), 3);
+    	addSequential(new DriveDistance(55), 3);
+    	addParallel(new DriveDistance(100), 5);
+    	addSequential(new ShooterArmToAngle(-0.5));
+    	addSequential(new Part1AutoDone(), 0.1);
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

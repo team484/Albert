@@ -11,6 +11,7 @@ public class AutoCrossLowBar extends CommandGroup {
     	addSequential(new ZeroArm(), 0.7);
     	addSequential(new ShooterArmToGround(true));
     	addSequential(new DriveDistance(148.5), 3.5);
+    	addSequential(new DriveDistance(-140.0), 3.5);
     	addSequential(new Part1AutoDone(), 0.1);
         // Add Commands here:
         // e.g. addSequential(new Command1());

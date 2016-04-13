@@ -9,10 +9,9 @@ public class AutoCrossChevalDeFrise extends CommandGroup {
     
     public  AutoCrossChevalDeFrise() {
     	addSequential(new ZeroArm(), 0.7);
-    	addSequential(new DriveDistance(45));
-    	addSequential(new ShooterArmToGround(true), 2);
+    	addSequential(new DriveDistance(60), 3.5);
+    	addSequential(new ShooterArmToAngle(-1.7), 3);
     	addParallel(new ShooterArmToGround(false));
-    	addSequential(new DriveDistance(-10));
     	addSequential(new DriveDistance(113));
         // Add Commands here:
         // e.g. addSequential(new Command1());

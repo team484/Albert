@@ -1,19 +1,17 @@
 package org.usfirst.frc.team484.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
  */
-public class AutoCrossMoat extends CommandGroup {
+public class AutoTouch extends CommandGroup {
     
-    public  AutoCrossMoat() {
+    public  AutoTouch() {
     	addSequential(new ZeroArm(), 0.7);
-    	addSequential(new PunchIt(), 10);
-    	addSequential(new WaitCommand(1),1);
-    	addSequential(new DriveDistance(30), 4);
+    	addSequential(new DriveDistance(42.0), 3.5);
     	addSequential(new Part1AutoDone(), 0.1);
+        // Add Commands here:
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

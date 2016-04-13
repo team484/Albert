@@ -1,6 +1,7 @@
 package org.usfirst.frc.team484.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
@@ -9,6 +10,10 @@ public class AutoCrossRockWall extends CommandGroup {
     
     public  AutoCrossRockWall() {
     	addSequential(new ZeroArm(), 0.7);
+    	addSequential(new PunchIt(), 10);
+    	addSequential(new ShooterArmToAngle(-1.6),2);
+    	addSequential(new DriveDistance(30), 4);
+    	addSequential(new Part1AutoDone(), 0.1);
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

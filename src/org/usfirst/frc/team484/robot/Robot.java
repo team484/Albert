@@ -55,6 +55,7 @@ public class Robot extends IterativeRobot {
 		//}
 		 autoCrossChooser = new SendableChooser(); //Initializes the choose menu for selecting crossing command
 	        autoCrossChooser.addDefault("Do Nothing", new AutoCrossNothing()); //adds do nothing as an option for crossing
+	        autoCrossChooser.addDefault("Touch Outerworks", new AutoTouch()); //adds do nothing as an option for crossing
 	        autoCrossChooser.addObject("ChevalDeFrise", new AutoCrossChevalDeFrise()); //adds cheval de frise as an option for crossing
 	        autoCrossChooser.addObject("LowBar", new AutoCrossLowBar()); //adds low bar as an option for crossing
 	        autoCrossChooser.addObject("Moat", new AutoCrossMoat()); //adds moat as an option for crossing
