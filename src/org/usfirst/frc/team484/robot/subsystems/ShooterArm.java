@@ -55,9 +55,9 @@ public class ShooterArm extends Subsystem {
 			maxOutput = 89.0 * RobotSettings.shooterArmMaxTorque / (0.0867 * currentDraw * voltage);
 			minOutput = 89.0 * RobotSettings.shooterArmMaxTorque / (0.0867 * (-1.0) * currentDraw * voltage);
 		}
-		if (outputValue > maxOutput) {
+		if (outputValue > maxOutput && maxOutput > 0.15) {
 			outputValue = maxOutput;
-		} else if (outputValue < minOutput) {
+		} else if (outputValue < minOutput && minOutput < - 0.15) {
 			outputValue = minOutput;
 		}
 		return outputValue;

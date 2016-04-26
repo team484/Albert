@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 public class TargetedShoot extends CommandGroup {
     
     public  TargetedShoot() {
+    	addSequential(new ZeroArm(), 0.7);
     	addParallel(new ShooterWheelsShoot(), 10);
     	addSequential(new WaitCommand(1), 1.0);
     	addSequential(new ShooterArmThroughAngle());

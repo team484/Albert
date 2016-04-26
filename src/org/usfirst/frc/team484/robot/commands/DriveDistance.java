@@ -36,7 +36,7 @@ public class DriveDistance extends Command {
 			}
     	}, new PIDOutput() {
     		public void pidWrite(double d) {
-    			Robot.drivetrain.setDrive(d / 1.5, 0.0);
+    			Robot.drivetrain.setDrive(d / 1.5, 0.20);
     		}
     	});
     	//pid.setOutputRange(-2.0, 2.0);
