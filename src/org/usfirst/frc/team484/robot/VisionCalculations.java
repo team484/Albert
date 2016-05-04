@@ -17,6 +17,7 @@ public class VisionCalculations {
 	public double lastHorizontal = Double.NaN;
 	public double lastDistance = Double.NaN;
 	public double lastAngle = Double.NaN;
+	public double lastHorizontalAngle = Double.NaN;
 	public static void main(String[] args) {
 		new VisionCalculations().run();
 	}
@@ -54,10 +55,12 @@ public class VisionCalculations {
 					lastAngle = -Math.atan(Math.log(-373*(distance * distance - 938.338 * distance - 33746.6))-17.0344);
 					lastHorizontal = horizontalOffset1;
 					lastDistance = distance;
+					lastHorizontalAngle = Math.atan(horizontalOffset1/lastDistance) * 57.2958;
 					SmartDashboard.putNumber("Distance", distance);
 					SmartDashboard.putNumber("H1", horizontalOffset1);
 					SmartDashboard.putNumber("H2", horizontalOffset2);
 					SmartDashboard.putNumber("Proper Angle", lastAngle);
+					SmartDashboard.putNumber("HAngCenter", lastHorizontalAngle);
 				}
 			} else {
 				noTarget();
@@ -70,10 +73,12 @@ public class VisionCalculations {
 		lastHorizontal = Double.NaN;
 		lastDistance = Double.NaN;
 		lastAngle = Double.NaN;
+		lastHorizontal = Double.NaN;
 		SmartDashboard.putNumber("Distance", Double.NaN);
 		SmartDashboard.putNumber("H1", Double.NaN);
 		SmartDashboard.putNumber("H2", Double.NaN);
 		SmartDashboard.putNumber("Proper Angle", Double.NaN);
+		SmartDashboard.putNumber("HAngCenter", Double.NaN);
 	}
 
 }

@@ -15,8 +15,12 @@ public class ShooterPiston extends Subsystem {
     }
     
     public void shooterPistonExtend() {
-    	Robot.robotIO.shooterPistonExtend.set(true);
-    	Robot.robotIO.shooterPistonRetract.set(false);
+    	if (Robot.robotIO.shooterLeftWheelMotor.get() > 0) {
+    		Robot.robotIO.shooterPistonExtend.set(true);
+    		Robot.robotIO.shooterPistonRetract.set(false);
+    	} else {
+    		shooterPistonRetract();
+    	}
     }
     
     public void shooterPistonRetract() {

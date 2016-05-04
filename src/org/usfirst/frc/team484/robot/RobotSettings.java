@@ -10,13 +10,17 @@ public class RobotSettings {
 	public static final double rotateAnglekI = 0.0;
 	public static final double rotateAnglekD = 0.02;
 	
+	public static final double rotateAngle2kP = 0.08;
+	public static final double rotateAngle2kI = 0.03;
+	public static final double rotateAngle2kD = 0.1;
+	
 	public static final double shooterArmkP = 1.7;
 	public static final double shooterArmkI = 0.002;
 	public static final double shooterArmkD = 0.2;
 	
 	
 	//Shooter Wheels Settings
-	public static final double shooterWheelsShootSpeedLeft = 8.5; //0.8
+	public static final double shooterWheelsShootSpeedLeft = 8.5; //8.5
 	public static final double shooterWheelsShootSpeedRight = -shooterWheelsShootSpeedLeft;
 	public static final double shooterWheelsIntakeSpeedLeft = -6; //-5
 	public static final double shooterWheelsIntakeSpeedRight = -shooterWheelsIntakeSpeedLeft;
@@ -29,7 +33,7 @@ public class RobotSettings {
 	public static final double shooterArmGravityCompensationCoefficient = 0.155;
 	public static final double shooterArmVoltageTarget = 12.0; //Will compensate by lowering voltages to this value
 	public static final double shooterArmTargetSpeed = 0.5;
-	public static final double shooterArmAngleStart = 0.1; //Vertical is 0 horizontal is -1.57 <-
+	public static final double shooterArmAngleStart = 0.03; //Vertical is 0 horizontal is -1.57 <-
 	public static final double shooterArmMaxTorque = 0.25; //0-1
 	
 	public static final double drivetrainDistancePerEncoderPulse = -0.094; //0966748
