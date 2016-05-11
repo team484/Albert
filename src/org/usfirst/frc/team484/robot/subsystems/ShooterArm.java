@@ -17,7 +17,7 @@ public class ShooterArm extends Subsystem {
 
 	public void shooterArmWithJoystick() {
 		if (Robot.robotIO.operatorStick.getRawButton(4)) {
-			Robot.robotIO.shooterArmMotor.set(Robot.robotIO.operatorStick.getY());
+			Robot.robotIO.shooterArmMotor.set(-Robot.robotIO.operatorStick.getY());
 		} else {
 			adjustedShooterArmValue(Robot.robotIO.operatorStick.getY());
 		}
@@ -26,7 +26,7 @@ public class ShooterArm extends Subsystem {
 
 	public void adjustedShooterArmValue(double speed) {
 		if (speed >= 0 && Math.abs(getArmAngle() - RobotSettings.shooterArmAngleStart) < 0.1 ) {
-			Robot.robotIO.shooterArmMotor.set(0.15);
+			Robot.robotIO.shooterArmMotor.set(-0.15);
 		} else {
 			double modSpeed;
 			if (speed > 0) {
@@ -35,7 +35,7 @@ public class ShooterArm extends Subsystem {
 				modSpeed = speed / RobotSettings.shooterArmDownSpeedDivisor;
 			}
 			modSpeed = modSpeed * RobotSettings.shooterArmVoltageTarget / Robot.pdpVoltage;
-			Robot.robotIO.shooterArmMotor.set(adjustTorque(modSpeed - RobotSettings.shooterArmGravityCompensationCoefficient * Math.sin(getArmAngle())));
+			Robot.robotIO.shooterArmMotor.set(-adjustTorque(modSpeed - RobotSettings.shooterArmGravityCompensationCoefficient * Math.sin(getArmAngle())));
 		}
 	}
 	public double adjustTorque(double setValue) {

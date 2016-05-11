@@ -17,6 +17,8 @@ public class TargetedShoot extends CommandGroup {
     	addParallel(new ShooterWheelsDoNothing(), 0.1);
     	addParallel(new ShooterArmWithJoystick(), 0.1);
     	addParallel(new ShooterPistonRetract(), 0.1);
+    	addSequential(new WaitCommand(200),200);
+    	addSequential(new ShooterArmToAngle(0.0),5);
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
