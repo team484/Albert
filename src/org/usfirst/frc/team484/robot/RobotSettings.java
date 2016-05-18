@@ -27,13 +27,13 @@ public class RobotSettings {
 	public static final double shooterWheelsVoltageRampRate = 24.0;
 	
 	//Shooter Arm Settings
-	public static final double shooterArmEncoderAnglePerPulse = 0.0177; //0.026511
+	public static final double shooterArmEncoderAnglePerPulse = 0.0175; //0.0177
 	public static final double shooterArmUpSpeedDivisor = 2.0;
 	public static final double shooterArmDownSpeedDivisor = 4.0;
 	public static final double shooterArmGravityCompensationCoefficient = 0.155;
 	public static final double shooterArmVoltageTarget = 12.0; //Will compensate by lowering voltages to this value
 	public static final double shooterArmTargetSpeed = 0.5;
-	public static final double shooterArmAngleStart = 0.03; //Vertical is 0 horizontal is -1.57 <-
+	public static final double shooterArmAngleStart = 0.035; //0.04//Vertical is 0 horizontal is -1.57 <-
 	public static final double shooterArmMaxTorque = 0.25; //0-1
 	
 	public static final double drivetrainDistancePerEncoderPulse = -0.094; //0966748
