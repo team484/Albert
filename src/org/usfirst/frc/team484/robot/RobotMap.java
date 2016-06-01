@@ -37,8 +37,8 @@ public class RobotMap {
 	public static int driveEncoderA = 0; //Encoder in Digital IO slot
 	public static int driveEncoderB = 1; //Encoder in Digital IO slot
 	
-	public static int shooterArmEncoderA = 4; //Encoder in Digital IO slot
-	public static int shooterArmEncoderB = 5; //Encoder in Digital IO slot
+	public static int shooterArmEncoderA = 2; //Encoder in Digital IO slot
+	public static int shooterArmEncoderB = 3; //Encoder in Digital IO slot
 	
 	//-----Joysticks-----
 	public static int driverStick = 0; //Port assigned to the driver stick on the driver station
