@@ -39,6 +39,8 @@ public class Robot extends IterativeRobot {
     SendableChooser autoShootChooser; //Creates a choose menu for selecting shooting command on dashboard
 
     public void robotInit() {
+    	robotIO.shooterRightWheelMotor.setSafetyEnabled(false);
+    	robotIO.shooterLeftWheelMotor.setSafetyEnabled(false);
 		oi = new OI(); //initializes joystick button maps
 		robotIO.airCompressor.start(); //turns on compressor
 		try {
@@ -95,6 +97,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        visionCalc.run();
         updatePDPValues();
         if (autoCrossCommand!= null) { if (commandWasRunning && part1AutoDone) {
         	commandWasRunning = false;

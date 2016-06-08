@@ -8,8 +8,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoShootHigh1 extends CommandGroup {
     
     public  AutoShootHigh1() {
-    	addSequential(new DriveDistance(84.0), 3.5);
-    	addSequential(new RotateAngle(72.3), 3.5);
     	addSequential(new AutoShootWithVision());
         // Add Commands here:
         // e.g. addSequential(new Command1());

@@ -55,7 +55,7 @@ public class VisionCalculations {
 					lastAngle = -Math.atan(Math.log(-373*(distance * distance - 938.338 * distance - 33746.6))-17.0344);
 					lastHorizontal = horizontalOffset1;
 					lastDistance = distance;
-					lastHorizontalAngle = Math.atan(horizontalOffset1/lastDistance) * 57.2958;
+					lastHorizontalAngle = Math.atan((horizontalOffset1 - 3)/lastDistance) * 57.2958;
 					SmartDashboard.putNumber("Distance", distance);
 					SmartDashboard.putNumber("H1", horizontalOffset1);
 					SmartDashboard.putNumber("H2", horizontalOffset2);

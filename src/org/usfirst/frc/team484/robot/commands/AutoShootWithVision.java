@@ -1,6 +1,7 @@
 package org.usfirst.frc.team484.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
@@ -8,8 +9,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoShootWithVision extends CommandGroup {
     
     public  AutoShootWithVision() {
-    	addSequential(new ShooterArmToAngle(0.0), 5);
-    	addSequential(new LineUpHighGoal());
+    	addParallel(new HorizontalLineup(), 7);
+    	addSequential(new WaitCommand(0.5),0.5);
     	addSequential(new TargetedShoot());
         // Add Commands here:
         // e.g. addSequential(new Command1());
