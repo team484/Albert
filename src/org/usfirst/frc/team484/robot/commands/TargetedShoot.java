@@ -12,6 +12,7 @@ public class TargetedShoot extends CommandGroup {
     	addSequential(new ZeroArm(), 0.7);
     	addParallel(new ShooterWheelsShoot(), 10);
     	addSequential(new WaitCommand(1), 1.0);
+    	addSequential(new TargetedShootWaitForTarget(), 100);
     	addSequential(new ShooterArmThroughAngle());
     	addSequential(new ShooterPistonExtend(), 0.6);
     	addParallel(new ShooterWheelsDoNothing(), 0.1);

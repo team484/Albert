@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 	private static boolean commandWasRunning = true;
 	public static boolean part1AutoDone = false;
+	public static boolean shotTargeted = false;
 	public static final RobotIO robotIO = new RobotIO(); //Initializing robotIO, a class which initializes all IO on the robot
 	//Initialization of all subsystems
 	public static final Drivetrain drivetrain = new Drivetrain();
@@ -46,6 +47,7 @@ public class Robot extends IterativeRobot {
 		try {
 			camera = CameraServer.getInstance(); //starts USB camera server
 			camera.startAutomaticCapture("cam3"); //assigns camera to camera server
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -98,6 +100,8 @@ public class Robot extends IterativeRobot {
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
         visionCalc.run();
+        shotTargeted = (Robot.visionCalc.lastDistance < 170.0 && Robot.visionCalc.lastDistance > 80.0 && !Double.isNaN(Robot.visionCalc.lastAngle));
+        publishDashboardValues();
         updatePDPValues();
         if (autoCrossCommand!= null) { if (commandWasRunning && part1AutoDone) {
         	commandWasRunning = false;
@@ -112,21 +116,27 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         updatePDPValues();
         visionCalc.run(); //Interprets vision processing results
-        
-        //Broadcast smartdashboard values
-        SmartDashboard.putNumber("Arm Angle", shooterArm.getArmAngle());
-        SmartDashboard.putNumber("Current", robotIO.pdp.getTotalCurrent());
-        SmartDashboard.putNumber("irR", robotIO.rightBallIR.getAverageVoltage());
-        SmartDashboard.putNumber("irL", robotIO.leftBallIR.getAverageVoltage());
-        SmartDashboard.putNumber("irBall", robotIO.ballInIR.getAverageVoltage());
-        SmartDashboard.putNumber("camera", robotIO.driverStick.getZ());
-        SmartDashboard.putBoolean("is in", shooterPiston.ballInShooter());
-        SmartDashboard.putNumber("camera IR", robotIO.cameraIR.getAverageVoltage());
-        SmartDashboard.putNumber("Distance Traveled: ", drivetrain.currentDistance());
+        shotTargeted = (Robot.visionCalc.lastDistance < 170.0 && Robot.visionCalc.lastDistance > 80.0 && !Double.isNaN(Robot.visionCalc.lastAngle));
+        publishDashboardValues();
     }
     
     public void testPeriodic() {
         LiveWindow.run();
+        visionCalc.run(); //Interprets vision processing results
+        shotTargeted = (Robot.visionCalc.lastDistance < 170.0 && Robot.visionCalc.lastDistance > 80.0 && !Double.isNaN(Robot.visionCalc.lastAngle));
+        publishDashboardValues();
+    }
+    public void publishDashboardValues() {
+    	SmartDashboard.putNumber("Arm Angle", shooterArm.getArmAngle());
+        SmartDashboard.putNumber("Current", robotIO.pdp.getTotalCurrent());
+       // SmartDashboard.putNumber("irR", robotIO.rightBallIR.getAverageVoltage());
+       // SmartDashboard.putNumber("irL", robotIO.leftBallIR.getAverageVoltage());
+       // SmartDashboard.putNumber("irBall", robotIO.ballInIR.getAverageVoltage());
+       // SmartDashboard.putNumber("camera", robotIO.driverStick.getZ());
+       // SmartDashboard.putBoolean("is in", shooterPiston.ballInShooter());
+       // SmartDashboard.putNumber("camera IR", robotIO.cameraIR.getAverageVoltage());
+        SmartDashboard.putNumber("Distance Traveled: ", drivetrain.currentDistance());
+        SmartDashboard.putBoolean("Ready To Shoot", shotTargeted);
     }
     public void updatePDPValues() {
     	if (timeCounter % 2 == 0) {
