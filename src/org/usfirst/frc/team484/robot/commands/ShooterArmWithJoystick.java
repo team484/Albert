@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -49,6 +50,7 @@ public class ShooterArmWithJoystick extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	SmartDashboard.putNumber("Operator Stick", Robot.robotIO.operatorStick.getY());
     	if (Math.abs(Robot.robotIO.operatorStick.getY()) > 0.09 || Robot.shooterArm.getArmAngle() > 0.0) {
     		Robot.shooterArm.shooterArmWithJoystick();
     		if (wasPIDOperated) {
@@ -58,8 +60,8 @@ public class ShooterArmWithJoystick extends Command {
     	} else {
     		if (!wasPIDOperated) {
     			wasPIDOperated = true;
-    			pid.setSetpoint(Robot.shooterArm.getArmAngle());
     			pid.reset();
+    			pid.setSetpoint(Robot.shooterArm.getArmAngle());
     			pid.enable();
     		}
     	}
